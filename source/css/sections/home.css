@@ -1,0 +1,17 @@
+#home h1 {
+
+  /* text formatting */
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+#home p {
+
+  /* text formatting */
+  text-align: center;
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 1px;
+}

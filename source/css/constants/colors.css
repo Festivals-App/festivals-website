@@ -1,0 +1,10 @@
+html {
+  --background-color: white;
+  --border-color: #ddd;
+  --text-color: black;
+  --selected-text-color: #262626;
+  --unempheesized-text-color: #6d6d6d;
+  --link-color: blue;
+  --link-hover-color: #262626;
+  --footer-color: #95a5a6;
+}

@@ -1,0 +1,63 @@
+*,
+*:after,
+*:before {
+
+  /* position */
+  margin: 0px;
+  padding: 0px;
+
+  /* Set box behaviour */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+body,
+html {
+
+  /* Set size */
+  height: 100vh;
+  width: 100vw;
+
+  /* text */
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: var(--text-color);
+
+  /* appearance */
+  background-color: var(--background-color);
+
+  /* behauviour */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+section {
+
+    margin-top: var(--navigation-menu-height);
+}
+
+/*----------------------------------------- 2) Links General --------------------------------------------------*/
+
+
+a {
+    /* text */
+    color: var(--link-color);
+    text-decoration: none;
+
+    /* transition */
+    transition: ease .2s;
+    -webkit-transition: ease .2s;
+    -moz-transition: ease .2s;
+    -o-transition: ease .2s;
+    -ms-transition: ease .2s;
+}
+
+
+a:hover {
+    color: var(--link-hover-color);
+}

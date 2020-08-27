@@ -1,0 +1,25 @@
+footer {
+
+  /* size */
+  width: 100vw;
+
+  /* position */
+  position:fixed;
+  left: 0px;
+  bottom: 0px;
+
+  /* text */
+  text-align: center;
+  font-size: 11pt;
+
+  /* appearance */
+  background-color: var(--footer-color);
+
+  /* behaviour */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}

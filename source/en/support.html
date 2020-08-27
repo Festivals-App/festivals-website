@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+    <meta name="description" content="Contact me if you have any questions, remarks or problems with one of my apps."/>
+    <meta name="keywords" content="mac, app, application, chronisar, scrinium"/>
+        
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>Simons Apps - support</title>
+    
+    <!--styles-->
+    <link href="../css/style.min.css" rel="stylesheet">
+
+  </head>
+  
+  <body>
+      
+      
+      <!--HEADER -->
+      <div class="header">
+          
+          <!--Desktop -->
+          <nav class="navigation-bar menu-bar">
+              
+              <ul>
+                  
+                  <li>
+                      <a class="menu-item title-item" href="index.html">SIMONS APPS</a>
+                  </li>
+                  <li>
+                      <a class="menu-item right-item language-selection" href="../support.html">DE</a>
+                  </li>
+                  <li>
+                      <a class="menu-item right-item selected-item" href="support.html">support</a>
+                  </li>
+                  <li>
+                      <a class="menu-item right-item" href="scrinium.html">scrinium</a>
+                  </li>
+                  <li>
+                      <a class="menu-item right-item" href="chronisar.html">chronisar</a>
+                  </li>
+                  <li>
+                      <a class="menu-item right-item" href="adiungo.html">adiungo</a>
+                  </li>
+                  
+              </ul>
+          </nav>
+          
+          <!--Smartphone/Tablet -->
+          <nav class="navigation-bar menu-burger">
+              
+              <div id="menuToggle">
+                  
+                  <input type="checkbox" />
+                  
+                  <a class="menu-item title-item right-item selected-item">support</a>
+                  
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  
+                  <ul id="menu">
+                      <a class="menu-item" href="index.html">home</a>
+                      <a class="menu-item" href="chronisar.html">chronisar</a>
+                      <a class="menu-item" href="scrinium.html">scrinium</a>
+                      <a class="menu-item selected-item" href="support.html">support</a>
+                      <a class="menu-item language-selection" href="../support.html">DE</a>
+                  </ul>
+              </div>
+              
+          </nav>
+          
+      </div>
+      <!--/.HEADER END-->
+    
+        <!--HOME-->
+    <section id="support" class="main-block">
+        
+        <div class="title">
+            <div class="title-container">
+                <div class="title-container-margin-box">
+                    <h1>Support</h1>
+                    <p>Contact me if you have any questions, remarks or problems with one of my apps.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="form-main">
+            <div id="form-div">
+                <form class="form" id="form1" method="post" action="../php/contact.php">
+                        
+                    <p class="name">
+                    <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name (optional)" id="name" />
+                    </p>
+                        
+                    <p class="email">
+                    <input name="email" type="text" class="validate[required,custom[email]] feedback-input" placeholder="E-Mail" id="email" />
+                    </p>
+                        
+                    <p class="name">
+                    <input name="subject" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Subject" id="subject" />
+                    </p>
+                        
+                    <p class="text">
+                    <textarea name="text" class="validate[required,length[6,300]] feedback-input" placeholder="Message" id="comment"></textarea>
+                    </p>
+                    
+                    <div class="submit">
+                        <input name="submit" type="submit" value="Send" id="button-blue"/>
+                        <div class="ease"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Impressum: Simon Gaus - c/o Handrich Kuglerstraße 1 10439 Berlin Germany - simon.cay.gaus[at]gmail[dot]com</p>
+        </footer>
+        
+    </section>
+        <!--/.HOME END-->
+
+  </body>
+</html>

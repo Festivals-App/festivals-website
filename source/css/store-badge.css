@@ -1,0 +1,34 @@
+#badge {
+
+    /* Set background */
+    background-image: url('../images/misc/download_badge.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    /* Set behaviour */
+    text-indent: -9999px;
+
+    /* Set size */
+    height: 60px;
+    width: 200px;
+
+    /* Set position */
+    float: right;
+}
+
+.badge-center-container {
+
+    /* Set size */
+    height: 60px;
+    width: 200px;
+
+    position: box;
+    margin: 0 auto;
+
+}
+
+.badge-center-container h5 {
+
+    text-align: center;
+}
