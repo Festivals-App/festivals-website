@@ -1,15 +1,45 @@
-##
+# Development environment for macOS
 
-install nginx (homebrew!)
-  -> sudo nginx
-  -> sudo nginx -s stop
-  -> sudo nginx -s reload
+In order to make contributing to the
+[festivals-website](https://github.com/Festivals-App/festivals-website)
+as accessible as possible, the website is developed only with free and
+open source applications which are available on for every major OS.
 
-in /usr/local/etc/nginx/nginx.conf
-  -> add/edit "user simon staff;"
+## Atom Editor
 
-in /usr/local/etc/nginx/sites-available/default
-  -> set root to project folder/build/current
+Download and install the [Atom Editor](https://atom.io/).
 
-install minify
-  -> brew install tdewolff/tap/minify
+Installed Atom Packets:
+  * language-applescript
+  * build-osa
+    dependencies: build, busy-signal
+  * pp-markdown
+
+
+## NGINX webserver
+
+```
+brew install nginx
+nginx
+nginx -s stop
+
+```
+
+Edit */usr/local/etc/nginx/nginx.conf* and change
+
+```
+location / {
+    root   html;
+```
+to
+```
+location / {
+    root   <path/to/project/folder>/build/current;
+```
+
+## Minify (HTML/CSS minifier)
+
+Install [minify](https://github.com/tdewolff/minify) to
+```
+brew install tdewolff/tap/minify
+```
