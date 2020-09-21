@@ -15,7 +15,7 @@
     <a href="#support-and-feedback">Support and Feedback</a> •
     <a href="#how-to-contribute">How to contribute</a> •
     <a href="#licensing">Licensing</a> •
-    <a href="https://www.coronawarn.app/en/">Web Site</a>
+    <a href="https://simonsapps.de/misc/festivals">Website</a>
 </p>
 <hr />
 
