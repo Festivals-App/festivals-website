@@ -22,7 +22,6 @@ Installed Atom Packets:
 brew install nginx
 nginx
 nginx -s stop
-
 ```
 
 Edit */usr/local/etc/nginx/nginx.conf* and change
@@ -39,7 +38,7 @@ location / {
 
 ## Minify (HTML/CSS minifier)
 
-Install [minify](https://github.com/tdewolff/minify) to
+Install [minify](https://github.com/tdewolff/minify)
 ```
 brew install tdewolff/tap/minify
 ```
