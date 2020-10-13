@@ -15,7 +15,7 @@
   <a href="#usage">Usage</a> •
   <a href="#deployment">Deployment</a> •
   <a href="#engage">Engage</a> •
-  <a href="#licensing">Licensing</a>
+  <a href="#licensing">Licensing</a> •
   <a href="https://simonsapps.de/misc/festivals">Website</a>
 </p>
 
