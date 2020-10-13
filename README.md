@@ -1,27 +1,20 @@
-<p align="center">
- <a href=" https://simonsapps.de/misc/festivals"><img src="https://github.com/Festivals-App/festivals-documentation/blob/master/images/festivals_title.png" width="180"></a>
-</p>
 
-
-<hr />
+<h1 align="center">
+    Festivals App: Website
+</h1>
 
 <p align="center">
     <a href="https://img.shields.io/mozilla-observatory/grade/simonsapps.de?publish" title="Latest Results"><img src="https://img.shields.io/mozilla-observatory/grade/simonsapps.de?publish" alt="Mozilla HTTP Observatory Grade"></a>
 </p>
+
 <p align="center">
-    <a href="#about-this-repository">About this Repository</a> •
-    <a href="#development">Development</a> •
-    <a href="#documentation">Documentation</a> •
-    <a href="#support-and-feedback">Support and Feedback</a> •
-    <a href="#how-to-contribute">How to contribute</a> •
-    <a href="#licensing">Licensing</a> •
-    <a href="https://simonsapps.de/misc/festivals">Website</a>
+  <a href="#development">Development</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#deployment">Deployment</a> •
+  <a href="#engage">Engage</a> •
+  <a href="#licensing">Licensing</a>
+  <a href="https://simonsapps.de/misc/festivals">Website</a>
 </p>
-<hr />
-
-# Festivals-App: Website
-
-## About this Repository
 
 This is the repository of the [Festivals App](https://github.com/Phisto/FestivalsApp) website.
 
@@ -37,27 +30,23 @@ TBA
 
 TBA
 
+## Deployment
+
 ### Updating festivalsapp.de
 
 Any direct commits and merged pull requests will automatically trigger follow-up actions to build and deploy the changes to [festivalsapp.de](https://simonsapps.de/misc/festivals). The respective [GitHub Actions](https://github.com/features/actions) are available in the [.github/workflows](.github/workflows) directory of this repository.
 
-## Documentation
+## Engage
 
-The full documentation for the Festivals-App can be found in the [festivals-documentation](https://github.com/Festivals-App/festivals-documentation) repository. The documentation repository contains technical documents, architecture information, and white papers related to this implementation.
-
-## Support and Feedback
+TBA
 
 The following channels are available for discussions, feedback, and support requests:
 
 | Type                     | Channel                                                |
 | ------------------------ | ------------------------------------------------------ |
-| **General discussion, issues, bugs**   | <a href="https://github.com/Festivals-App/festivals-website/issues/new/choose" title="General Discussion"><img src="https://img.shields.io/github/issues/Festivals-App/festivals-website/question.svg?style=flat-square"></a> </a>   |
-| **Other requests**    | <a href="mailto:phisto05@gmail.com" title="Email us"><img src="https://img.shields.io/badge/email-Festivals%20App%20team-green?logo=mail.ru&style=flat-square&logoColor=white"></a> |
-
-
-## How to contribute
-
-TBA
+| **General Discussion**   | <a href="https://github.com/festivals-app/festivals-documentation/issues/new/choose" title="General Discussion"><img src="https://img.shields.io/github/issues/festivals-app/festivals-documentation/question.svg?style=flat-square"></a> </a>   |
+| **Concept Feedback**    | <a href="https://github.com/festivals-app/festivals-documentation/issues/new/choose" title="Open Concept Feedback"><img src="https://img.shields.io/github/issues/festivals-app/festivals-documentation/architecture.svg?style=flat-square"></a>  |
+| **Other Requests**    | <a href="mailto:phisto05@gmail.com" title="Email Festivals Team"><img src="https://img.shields.io/badge/email-Festivals%20team-green?logo=mail.ru&style=flat-square&logoColor=white"></a>   |
 
 ## Licensing
 
