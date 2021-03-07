@@ -31,7 +31,7 @@ TBA
 
 ### Getting started
 
-TBA
+Selecte debug-deploy.scpt and hit fn + F9 to rebuild website.
 
 ## Deployment
 
