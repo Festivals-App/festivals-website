@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": “N67G6688LK.de.simonsserver.festivalsapps",
+        "paths": [
+          "*"
+        ]
+      }
+    ]
+  }
+}
