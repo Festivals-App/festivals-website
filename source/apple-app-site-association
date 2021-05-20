@@ -3,15 +3,30 @@
     "apps": [],
     "details": [
       {
-        "appID": "N67G6688LK.de.simonsserver.festivalsapp",
+        "appIDs": ["N67G6688LK.de.simonsserver.festivalsapp"],
         "components": [
           {
+            "/": "/*",
+            "comment": "I want a wildcard"
+          },
+          {
+            "/": "*",
+            "comment": "I want a wildcard"
+          },
+          {
             "/": "/",
-            "comment": "Matches any URL whose path starts with /"
+            "comment": "I want a wildcard"
+          },
+          {
+            "/": "",
+            "comment": "I want a wildcard"
           }
-        ],
-        "paths": ["*"]
-      }
+        ]
+      },
+      {
+      "appID": "N67G6688LK.de.simonsserver.festivalsapp",
+      "paths": [ "*" ]
+			}
     ]
   }
 }
