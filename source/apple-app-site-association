@@ -1,11 +1,17 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "N67G6688LK.de.simonsserver.festivalsapp",
-                "paths": [ "*" ]
-            }
-        ]
-    }
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "N67G6688LK.de.simonsserver.festivalsapp",
+        "components": [
+          {
+            "/": "/",
+            "comment": "Matches any URL whose path starts with /"
+          }
+        ],
+        "paths": ["*"]
+      }
+    ]
+  }
 }
