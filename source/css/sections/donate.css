@@ -1,0 +1,31 @@
+#donate h1 {
+
+    /* text formatting */
+    text-align: center;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+  
+  #donate p {
+  
+    /* text formatting */
+    text-align: center;
+    font-weight: 400;
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+  
+  @media (max-width: 960px) {
+  
+    #donate h1 {
+      font-weight: 400;
+      font-size: 22px;
+    }
+  
+    #donate p {
+  
+      font-weight: 350;
+      font-size: 18px;
+    }
+  }

@@ -10,6 +10,7 @@
 
   display: table;
   border-spacing: 15px;
+  width: 100%;
 }
 
 .compact {
@@ -53,6 +54,10 @@ h1 {
   width: 50%;
 }
 
+.third {
+  width: 33%;
+}
+
 .fixed {
   width:  230px;
   height: 230px;
@@ -67,10 +72,5 @@ h1 {
   
   .compact {
    display: table;
-  }
-
-  .table-row {
-
-    width: 100%;
   }
 }
