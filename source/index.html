@@ -70,33 +70,36 @@
       </div>
       <!--/.HEADER END-->
 
-
         <!--HOME-->
         <section id="home">
 
-        <!--
+        <!-- table --> 
+        <div class="table">
 
-        <div class="title-container">
-          <div class="title-container-content">
-              <h1>Die App fürs ganze Festival Jahr!</h1>
-              <p>Eine App für deine Festivals. Mit interaktivem Timetable, Bandinfos, Gig-Alarm, persönlichem Spielplan und vielem mehr.</p>
+        <div class="table-row">
+            <div class="spacer-cell"></div>
           </div>
-        </div>
 
-       -->
+            <div class="table-row">
+              <div class="text-cell full">
+                <h1>Eine App für deine Festivals. Mit interaktivem Timetable, Bandinfos, Veranstaltungs-Alarm, persönlichem Spielplan und vielem mehr.</h1>
+              </div>
+            </div>
 
-       <div class="table">
+            <div class="table-row">
+              <div class="spacer-cell"></div>
+            </div>
 
            <div class="table-row">
                <div class="text-cell half">
                  <h1>Timetable</h1>
-                 <p>Wer tritt als nächstes auf? Und wann? Und wo? Mit dem intraktiven Timetable verlierst du im Festival-Altag nie den Überblick.</p>
+                 <p>Wer tritt als nächstes auf? Und wann? Und wo? Mit dem intraktiven Timetable verlierst du im Festival-Alltag nie den Überblick.</p>
                </div>
-               <img class="image-cell full" src="./images/timetable.png" alt="timetable">
+               <img class="image-cell fixed" src="./images/timetable.png" alt="timetable">
            </div>
 
            <div class="table-row">
-               <img class="image-cell full" src="./images/aboutartist.png" alt="aboutartist">
+               <img class="image-cell fixed" src="./images/aboutartist.png" alt="aboutartist">
                <div class="text-cell half">
                    <h1>Bandinfos</h1>
                    <p>Du willst schnell checken wer gleich für dich auf der Bühne steht? Finde alle Künstler*innen schnell und einfach.</p>
@@ -105,85 +108,66 @@
 
            <div class="table-row">
                <div class="text-cell half">
-                 <h1>Persönlicher Spielplan und Gig-Alarm</h1>
-                 <p>Stelle dir deinen persönlichen Spielplan zusammen und verpasse dank des Gig-Alarms nie mehr eine*n Künstler*in.</p>
+                    <h1>Persönlicher Spielplan und Veranstaltungs-Alarm</h1>
+                    <p>Stelle dir deinen persönlichen Spielplan zusammen und verpasse dank des Veranstaltungs-Alarms nie mehr eine*n Künstler*in.</p>
                </div>
-               <img class="image-cell full" src="./images/favorites.png" alt="favorites">
+               <img class="image-cell fixed" src="./images/favorites.png" alt="favorites">
            </div>
 
-         </div>
+        </div>
+        <!-- /table -->
 
+        <!-- compact table --> 
+        <div class="table compact">
 
-        <!-- <div class="table" id="festivalTable"></div> -->
+            <div class="table-row">
+                <div class="spacer-cell"></div>
+            </div>
+    
+            <div class="table-row">
+                <div class="text-cell full">
+                    <h1>Eine App für deine Festivals. Mit interaktivem Timetable, Bandinfos, Veranstaltungs-Alarm, persönlichem Spielplan und vielem mehr.</h1>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="text-cell half">
+                    <h1>Timetable</h1>
+                    <p>Wer tritt als nächstes auf? Und wann? Und wo? Mit dem intraktiven Timetable verlierst du im Festival-Alltag nie den Überblick.</p>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <img class="image-cell fixed" src="./images/timetable.png" alt="timetable">
+            </div>
+
+            <div class="table-row">
+                <div class="text-cell half">
+                    <h1>Bandinfos</h1>
+                   <p>Du willst schnell checken wer gleich für dich auf der Bühne steht? Finde alle Künstler*innen schnell und einfach.</p>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <img class="image-cell fixed" src="./images/aboutartist.png" alt="aboutartist">
+            </div>
+
+            <div class="table-row">
+                <div class="text-cell half">
+                    <h1>Persönlicher Spielplan und Veranstaltungs-Alarm</h1>
+                    <p>Stelle dir deinen persönlichen Spielplan zusammen und verpasse dank des Veranstaltungs-Alarms nie mehr eine*n Künstler*in.</p>
+                </div>
+            </div>
+
+            <div class="table-row">
+                <img class="image-cell fixed" src="./images/favorites.png" alt="favorites">
+            </div>
+
+        </div>
+        <!-- /table -->
 
         </section>
         <!--/.HOME END-->
-
-        <!--Festival Loading-->
-        <script>
-
-        document.getElementById("festivalTable").innerHTML = placeholderRow('Loading festivals...');
-
-        var url = "php/getFestivals.php";
-        var xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-               var resultData = JSON.parse(xhttp.responseText);
-               displayList(resultData.data);
-            }
-            else {
-                document.getElementById("festivalTable").innerHTML = placeholderRow('Failed to loade festivals...');
-            }
-        };
-        xhttp.open("GET", url, true);
-        xhttp.send();
-
-        function displayList(arr) {
-            var out = '<div class="spacer"></div>';
-            var i;
-            for(i = 0; i < arr.length; i++) {
-
-                let festival = arr[i]
-
-                out += '<div class="row link-row">';
-                out += '<a href="https://api.simonsserver.de/festivals/' + festival.festival_id + '">';
-                out += '<div class="app-description-container">';
-
-                out += '<div class="image-container">';
-                out += '<img class="app-icon" src="' + festival.include.image[0].image_ref + '" loading="lazy" alt="Festival Icon">';
-                out += '</div>';
-
-                out += '<div class="app-description-box">';
-                out += '<h4>' + festival.festival_name + '</h4>';
-                out += '<p>' + festival.festival_description + '</p>';
-                out += '</div>';
-                out += '</div>';
-                out += '</a>';
-                out += '</div>';
-                out += '<div class="spacer"></div>';
-            }
-            document.getElementById("festivalTable").innerHTML = out;
-        }
-
-        function placeholderRow(text) {
-
-            var placeholder = '<div class="spacer"></div>';
-            placeholder += '<div class="row link-row">';
-            placeholder += '<a href="">';
-            placeholder += '<div class="app-description-container">';
-            placeholder += '<div class="app-description-box">';
-            placeholder += '<h4>' + text + '</h4>';
-            placeholder += '</div>';
-            placeholder += '</div>';
-            placeholder += '</a>';
-            placeholder += '</div>';
-            placeholder += '<div class="spacer"></div>';
-
-            return placeholder
-        }
-
-        </script>
 
   </body>
 </html>

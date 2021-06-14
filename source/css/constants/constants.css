@@ -1,4 +1,5 @@
 html {
   --navigation-menu-height: 80px;
   --max-content-width: 850px;
+  --max-compact-content-width: 600px;
 }

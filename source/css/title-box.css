@@ -15,6 +15,9 @@
 
 .title-container-content {
 
+    /* size */
+    max-width: var(--max-content-width);
+
     /* position */
     margin: 0;
     position: absolute;
@@ -27,5 +30,15 @@
 
 @media (max-width: 960px) {
 
+  .title-container-content {
 
+     /* size */
+     max-width: var(--max-content-width);
+
+     /* position */
+     margin: 0;
+     position: absolute;
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+  }
 }
