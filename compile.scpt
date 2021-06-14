@@ -43,4 +43,4 @@ try
 	do shell script "cp -r " & build_path & "/* " & current_build_path
 end try
 
-return source_path
+return temp_css_file
