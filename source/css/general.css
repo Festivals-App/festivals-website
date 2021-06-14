@@ -57,6 +57,10 @@ a {
     -ms-transition: ease .2s;
 }
 
+.highlight {
+  color: var(--highlight-color);
+}
+
 
 a:hover {
     color: var(--link-hover-color);
