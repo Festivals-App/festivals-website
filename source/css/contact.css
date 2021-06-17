@@ -5,10 +5,6 @@
     height: 110px;
 }
 
-#feedback-page{
-    text-align:center;
-}
-
 #form-main{
     width:100%;
     float:left;
@@ -56,13 +52,8 @@
     padding: 13px 13px 13px 13px;
 }
 
-.focused {
-    color:#30aed6;
-    border:#30aed6 solid 3px;
-}
-
 /* Icons ---------------------------------- */
-#name{
+#name {
 
     background-size: 30px 30px;
     background-position: 11px 8px;
@@ -104,6 +95,7 @@ textarea {
     line-height: 150%;
     resize:vertical;
 }
+
 
 input:hover, textarea:hover,
 input:focus, textarea:focus {
@@ -156,7 +148,7 @@ input:focus, textarea:focus {
     #form-div{
         left: 3%;
         margin-right: 3%;
-        width: 88%;
+        width: 93%;
         margin-left: 0;
         padding-left: 3%;
         padding-right: 3%;

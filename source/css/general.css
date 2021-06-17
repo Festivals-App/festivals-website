@@ -41,8 +41,39 @@ section {
     margin-top: var(--navigation-menu-height);
 }
 
-/*----------------------------------------- 2) Links General --------------------------------------------------*/
+/*----------------------------------------- 1) Fonts General --------------------------------------------------*/
 
+h1 {
+  /* text formatting */
+  text-align: center;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin: 10px;
+}
+
+p {
+  /* text formatting */
+  text-align: center;
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 960px) {
+
+  h1 {
+    font-weight: 400;
+    font-size: 22px;
+  }
+
+  p {
+    font-weight: 350;
+    font-size: 18px;
+  }
+}
+
+/*----------------------------------------- 2) Links General --------------------------------------------------*/
 
 a {
     /* text */
