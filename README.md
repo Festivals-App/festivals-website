@@ -34,7 +34,7 @@ Select debug-deploy.scpt and hit fn + F9 to rebuild website. Check results in bu
 
 ## Deployment
 
-### Updating festivalsapp.de
+### Updating festivalsapp.org
 
 Any direct commits and merged pull requests will automatically trigger follow-up actions to build and deploy the changes to [festivalsapp.de](https://simonsapps.de/misc/festivals). The respective [GitHub Actions](https://github.com/features/actions) are available in the [.github/workflows](.github/workflows) directory of this repository.
 
