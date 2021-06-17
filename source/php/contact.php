@@ -6,7 +6,7 @@
     $subject = $_POST['subject'];
     
     $from = 'From: ' . $email . '';
-    $to = 'support@simonsapps.de ';
+    $to = 'simon.cay.gaus@gmail.com ';
     
     $body = "From: $name\n E-Mail: $email\n\n Message:\n $message";
     
@@ -21,7 +21,6 @@
                 $name = 'Anonym';
             }
                 
-        
             if (mail($to, $subject, $body, $from)) {
                 
                 echo '<h3>Your message has been sent! You will be redirected in 3 Seconds.</h3>';

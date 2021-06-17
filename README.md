@@ -19,9 +19,9 @@
   <a href="https://simonsapps.de/misc/festivals">Website</a>
 </p>
 
-This is the repository of the [Festivals App](https://github.com/Phisto/FestivalsApp) website.
+This is the repository of the [Festivals App](https://github.com/Festivals-App/festivals-documentation) website.
 
-This repository contains the source files of the official website for the Festivals-App as it is available at [festivalsapp.de](https://simonsapps.de/misc/festivals). For information about the project, please see our [documentation repository](https://github.com/Festivals-App/festivals-documentation).
+This repository contains the source files of the official website for the Festivals-App as it is available at [festivalsapp.org](https://festivalsapp.org/). For information about the project, please see our [documentation repository](https://github.com/Festivals-App/festivals-documentation).
 
 ## Development
 
