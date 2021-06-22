@@ -2,8 +2,8 @@
 
 current_time="$(date +"%Y%m%d-%H-%M-%S")"
 source_path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )/source"
-build_path="build_new/$current_time"
-current_build_path="build_new/current"
+build_path="build/$current_time"
+current_build_path="build/current"
 
 mkdir -p "$build_path"
 cp "$source_path"/* "$build_path"
