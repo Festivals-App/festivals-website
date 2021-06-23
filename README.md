@@ -30,7 +30,7 @@ All necessary files are in the [source](./source) folder waiting to get compiled
 
 I use [Visual Studio Code](https://code.visualstudio.com/), as it is super easy to run the compile script with just a shortcut (Shift+Cmd+B) and i don't have any preferences when developing websites.
 
-The key requirements for the website are: fast, secure, easy to update, open source and accessible([*](https://github.com/Festivals-App/festivals-website/issues/1).
+The key requirements for the website are: fast, secure, easy to update, open source and accessible([*](https://github.com/Festivals-App/festivals-website/issues/1)).
  
 ### Requirements
 
