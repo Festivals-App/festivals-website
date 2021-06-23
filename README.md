@@ -19,24 +19,37 @@
   <a href="https://festivalsapp.org">Website</a>
 </p>
 
-This repository contains the source files of the official website for the Festivals-App as it is available at [festivalsapp.org](https://festivalsapp.org/).
+This repository contains the source files of the official website for the FestivalsApp as it is available at [festivalsapp.org](https://festivalsapp.org/).
 
 ## Development
 
+I have a rather custom development workflow for the FestvialsApp website. This is probably due to my dislike for website development: i can't bring myself to learn the conventional ways.
+Though unconventional, it is quite straight forward as the website only uses html, css and a little bit of php for the contact form. 
+
+All necessary files are in the [source](./source) folder waiting to get compiled by the compile script which is minifying and merging those files and is outputting the result to a folder that is called "build". This folder now contains a new folder with the current timestamp as its name and a folder called "current". The "current" folder will always contain the newest compiled files, and can be used to see the latest changes to the source files using a browser.
+
+I use [Visual Studio Code](https://code.visualstudio.com/), as it is super easy to run the compile script with just a shortcut (Shift+Cmd+B) and i don't have any preferences when developing websites.
+
+The key requirements for the website are: fast, secure, easy to update, open source and accessible([*](https://github.com/Festivals-App/festivals-website/issues/1).
+ 
 ### Requirements
 
-TBA
+- [Bash script](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) friendly environment
+- [Visual Studio Code](https://code.visualstudio.com/download) 1.57.1+
+      Plugin recommendations for VSCode are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
+- [minify](https://github.com/tdewolff/minify)
+      For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
 
 ### Setup
 
-Select debug-deploy.scpt and hit fn + F9 to rebuild website. Check results in build/current folder.
+[Visual Studio Code](https://code.visualstudio.com/download) and [minify](https://github.com/tdewolff/minify) are open source projects which can be installed on almost any operating system, see the project websites for instructions. I don't have a special setup in [Visual Studio Code](https://code.visualstudio.com/download) and the provided [configuration files](./.vscode) should let you start right away.
 
 
 ## Deployment
 
 ### Updating festivalsapp.org
 
-Any direct commits and merged pull requests will automatically trigger follow-up actions to build and deploy the changes to [festivalsapp.de](https://simonsapps.de/misc/festivals). The respective [GitHub Actions](https://github.com/features/actions) are available in the [.github/workflows](.github/workflows) directory of this repository.
+TBA
 
 
 # Documentation & Architecture
@@ -50,7 +63,7 @@ The general documentation for the Festivals App is in the [festivals-documentati
 
 I welcome every contribution, whether it is a pull request or a fixed typo.
 
-The best place to discuss questions and suggestions regarding the website is the [issues](https://github.com/festivals-app/<project_path>/issues/) section on github. If this doesn't fit you proposal or reason to contact me, there are some more general purpose communication channels where you can reach me, listed in the following table.
+The best place to discuss questions and suggestions regarding the website is the [issues](https://github.com/festivals-app/festivals-website/issues/) section on github. If this doesn't fit you proposal or reason to contact me, there are some more general purpose communication channels where you can reach me, listed in the following table.
 
 | Type                     | Channel                                                |
 | ------------------------ | ------------------------------------------------------ |
