@@ -36,9 +36,9 @@ The key requirements for the website are: fast, secure, easy to update, open sou
 
 - [Bash script](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) friendly environment
 - [Visual Studio Code](https://code.visualstudio.com/download) 1.57.1+
-      Plugin recommendations for VSCode are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
+    * Plugin recommendations for VSCode are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 - [minify](https://github.com/tdewolff/minify)
-      For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
+    * For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
 
 ### Setup
 
