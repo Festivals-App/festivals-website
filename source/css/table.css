@@ -42,6 +42,12 @@
   height: 5px;
 }
 
+.bottom-padding {
+
+  display: table-cell;
+  height: 100px;
+}
+
 .full {
   width: 100%;
 }
