@@ -55,6 +55,7 @@ The install script will place all necessary files, but need some additional ngin
 curl -o install.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/install.sh
 chmod +x install.sh
 sudo ./install.sh
+rm install.sh
 ```
 
 Updating
@@ -62,6 +63,7 @@ Updating
 curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh
 chmod +x update.sh
 sudo ./update.sh
+rm update.sh
 ```
 
 Uninstalling
@@ -69,6 +71,7 @@ Uninstalling
 curl -o uninstall.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/uninstall.sh
 chmod +x uninstall.sh
 sudo ./uninstall.sh
+rm uninstall.sh
 ```
 
 
