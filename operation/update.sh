@@ -2,7 +2,7 @@
 #
 # update.sh 1.0.0
 #
-# Enables the firewall, installs the newest go and the festivals-server and starts it as a service.
+#
 #
 # (c)2020-2021 Simon Gaus
 #

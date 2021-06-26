@@ -59,14 +59,14 @@ sudo ./install.sh
 
 Updating
 ```bash
-curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-server/master/operation/update.sh
+curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh
 chmod +x update.sh
 sudo ./update.sh
 ```
 
 Uninstalling
 ```bash
-curl -o uninstall.sh https://raw.githubusercontent.com/Festivals-App/festivals-server/master/operation/uninstall.sh
+curl -o uninstall.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/uninstall.sh
 chmod +x uninstall.sh
 sudo ./uninstall.sh
 ```
