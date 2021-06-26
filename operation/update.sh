@@ -40,6 +40,7 @@ cd /usr/local/festivals-website
 echo "Installing current festivals-website..."
 systemctl stop nginx
 rm -rf /var/www/festivalsapp.org
+mv /usr/local/festivals-website/build/current /var/www/festivalsapp.org
 chown -R $USER:$USER /var/www/festivalsapp.org
 chmod -R 755 /var/www/festivalsapp.org
 
