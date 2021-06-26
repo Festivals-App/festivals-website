@@ -48,3 +48,4 @@ chmod -R 755 /var/www/festivalsapp.org
 cd /usr/local || exit
 rm -rf /usr/local/festivals-website
 systemctl start nginx
+echo "Done installing the newest festivals-website."
