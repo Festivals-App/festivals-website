@@ -1,0 +1,28 @@
+server {
+
+    # Basic configuration
+    server_name festivalsapp.org www.festivalsapp.org;
+    root /var/www/festivalsapp.org/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    # Apple requires the webserver to retrun application/json as content type
+    location /.well-known/apple-app-site-association {
+        default_type application/json;
+    }
+
+    # Apple requires the webserver to retrun application/json as content type
+    location /apple-app-site-association {
+        default_type application/json;
+    }
+
+    # Check if file exists and return 404 if not 
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Security settings recommended by Mozilla Observatory https://observatory.mozilla.org/
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+}

@@ -26,11 +26,11 @@ This repository contains the source files of the official website for the Festiv
 I have a rather custom development workflow for the FestvialsApp website. This is probably due to my dislike for website development: i can't bring myself to learn the conventional ways.
 Though unconventional, it is quite straight forward as the website only uses html, css and a little bit of php for the contact form. 
 
-All necessary files are in the [source](./source) folder waiting to get compiled by the compile script which is minifying and merging those files and is outputting the result to a folder that is called "build". This folder now contains a new folder with the current timestamp as its name and a folder called "current". The "current" folder will always contain the newest compiled files, and can be used to check the latest changes to the source files using a browser.
+All necessary files are in the [source](./source) folder waiting to get compiled by the compile script which is minifying and merging those files and is outputting the result to a folder called "build". This folder now contains a new folder with the current timestamp as its name and a folder called "current". The "current" folder will always contain the newest compiled files, and can be used to check the latest changes to the source files using a browser.
 
 I use [Visual Studio Code](https://code.visualstudio.com/), as it is super easy to run the compile script with just a shortcut (Shift+Cmd+B) and i don't have any preferences when developing websites.
 
-The key requirements for the website are: fast, secure, easy to update, open source and accessible([*](https://github.com/Festivals-App/festivals-website/issues/1)).
+The key requirements for the website are: fast, easy to update, open source, accessible([*](https://github.com/Festivals-App/festivals-website/issues/1)) and secure.
  
 ### Requirements
 
@@ -47,9 +47,29 @@ The key requirements for the website are: fast, secure, easy to update, open sou
 
 ## Deployment
 
-### Updating festivalsapp.org
+I use [nginx](https://www.nginx.com/) to serve [festivalsapp.org](https://festivalsapp.org/), so the website needs to go to /var/www/festivalsapp.org
 
-TBA
+Installing
+The install script will place all necessary files, but need some additional nginx and ssl setup.
+```bash
+curl -o install.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/install.sh
+chmod +x install.sh
+sudo ./install.sh
+```
+
+Updating
+```bash
+curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-server/master/operation/update.sh
+chmod +x update.sh
+sudo ./update.sh
+```
+
+Uninstalling
+```bash
+curl -o uninstall.sh https://raw.githubusercontent.com/Festivals-App/festivals-server/master/operation/uninstall.sh
+chmod +x uninstall.sh
+sudo ./uninstall.sh
+```
 
 
 # Documentation & Architecture
