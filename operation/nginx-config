@@ -2,7 +2,7 @@ server {
 
     # Basic configuration
     server_name festivalsapp.org www.festivalsapp.org;
-    root /var/www/festivalsapp.org/html;
+    root /var/www/festivalsapp.org;
     index index.html index.htm index.nginx-debian.html;
 
     # Apple requires the webserver to retrun application/json as content type

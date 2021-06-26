@@ -33,7 +33,7 @@ build_path="build/$current_time"
 current_build_path="build/current"
 
 mkdir -p "$build_path"
-cp "$source_path"/* "$build_path"
+cp "$source_path"/* "$build_path" 2>/dev/null
 
 # Handle css compiling
 # 
@@ -57,8 +57,17 @@ cp -r "$php_source_path" "$build_path"
 cp -r "$en_source_path" "$build_path"
 cp -r "$images_source_path" "$build_path"
 
+# Handle apple-app-site-association file
+# 
+site_association_source_path="$source_path/apple-app-site-association"
+site_association_folder="$build_path/.well-known"
+site_association_build_path="$site_association_folder/apple-app-site-association"
+mkdir -p "$site_association_folder"
+cp "$site_association_source_path" "$site_association_build_path"
+
 # Cleanup
 # 
 rm -rf "$current_build_path"
-mkdir -p "$current_build_path"
-cp -r "$build_path"/* "$current_build_path"
+cp -r "$build_path" "$current_build_path"
+
+echo "Done compiling festivalsapp.org source files."

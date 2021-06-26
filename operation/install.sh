@@ -13,9 +13,9 @@ cd /usr/local || exit
 
 # Install minify if needed.
 #
-if ! command -v go > /dev/null; then
+if ! command -v minify > /dev/null; then
   echo "Installing minify..."
-  apt-get install -y minify
+  apt-get install minify -y > /dev/null;
 fi
 
 # Install git if needed.
@@ -25,7 +25,7 @@ if ! command -v git > /dev/null; then
   apt-get install git -y > /dev/null;
 fi
 
-# Compiling and installing festivals-website to /var/www/festivalsapp.org/html
+# Compiling and installing festivals-website to /var/www/festivalsapp.org
 #
 echo "Downloading current festivals-website..."
 yes | sudo git clone https://github.com/Festivals-App/festivals-website.git /usr/local/festivals-website > /dev/null;
@@ -34,3 +34,7 @@ cd /usr/local/festivals-website
 rm -rf /var/www/festivalsapp.org
 chown -R $USER:$USER /var/www/festivalsapp.org
 chmod -R 755 /var/www/festivalsapp.org
+
+# Cleanup
+cd ~/
+rm -rf /usr/local/festivals-website
