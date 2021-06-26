@@ -29,3 +29,8 @@ fi
 #
 echo "Downloading current festivals-website..."
 yes | sudo git clone https://github.com/Festivals-App/festivals-website.git /usr/local/festivals-website > /dev/null;
+cd /usr/local/festivals-website
+./compile.sh
+rm -rf /var/www/festivalsapp.org
+chown -R $USER:$USER /var/www/festivalsapp.org
+chmod -R 755 /var/www/festivalsapp.org
