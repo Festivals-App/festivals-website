@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-    <a href="https://img.shields.io/mozilla-observatory/grade/simonsapps.de?publish" title="Latest Results"><img src="https://img.shields.io/mozilla-observatory/grade/festivalsapp.org?publish" alt="Mozilla HTTP Observatory Grade"></a>
+    <a href="https://img.shields.io/mozilla-observatory/grade/festivalsapp.org?publish" title="Latest Results"><img src="https://img.shields.io/mozilla-observatory/grade/festivalsapp.org?publish" alt="Mozilla HTTP Observatory Grade"></a>
     <a href="https://github.com/Festivals-App/festivals-website/commits/" title="Last Commit"><img src="https://img.shields.io/github/last-commit/Festivals-App/festivals-website?style=flat"></a>
    <a href="https://github.com/festivals-app/festivals-website/issues" title="Open Issues"><img src="https://img.shields.io/github/issues/festivals-app/festivals-website?style=flat"></a>
    <a href="./LICENSE" title="License"><img src="https://img.shields.io/github/license/festivals-app/festivals-website.svg"></a>
