@@ -5,10 +5,14 @@
     $message = $_POST['text'];
     $subject = $_POST['subject'];
     
-    $from = 'From: ' . $email . '';
-    $to = 'simon.cay.gaus@gmail.com ';
+    $from = 'From: ' . $email . '' . "\r\n" .
+    'Reply-To: ' . $email . '' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+
+    $to = 'simon.cay.gaus@gmail.com';
     
-    $body = "From: $name\n E-Mail: $email\n\n Message:\n $message";
+    $body = '-' . $message . '-';
     
     $URL="../contact.html";
     echo '<META HTTP-EQUIV="refresh" content="3;URL=' . $URL . '">';
