@@ -36,18 +36,20 @@ The key requirements for the website are: fast, easy to update, open source, acc
 
 - [Bash script](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) friendly environment
 - [Visual Studio Code](https://code.visualstudio.com/download) 1.57.1+
-    * Plugin recommendations for VSCode are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
+    * Plugin recommendations are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 - [minify](https://github.com/tdewolff/minify)
     * For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
+- [php-fpm](https://www.php.net/manual/de/install.fpm.php) 7.4.3+
 
 ### Setup
 
-[Visual Studio Code](https://code.visualstudio.com/download) and [minify](https://github.com/tdewolff/minify) are open source projects which can be installed on almost any operating system, see the project websites for instructions. I don't have a special setup in [Visual Studio Code](https://code.visualstudio.com/download) and the provided [configuration files](./.vscode) should let you start right away.
+I don't have a special setup in [Visual Studio Code](https://code.visualstudio.com/download) and the provided [configuration files](./.vscode) should let you start right away.
+You only need to install minify on your system to allow the compile script run.
 
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu 20 LTS at [digitalocean](https://www.digitalocean.com/). To deploy the website you first have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup).
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy the website you have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup) first. Otherwise the are no special requirements for 
 
 ### Installing festivalsapp.org
 ```bash
@@ -60,8 +62,6 @@ rm install.sh
 After installing you only need to configure [HTTPS](https://dev.to/joelaberger/no-magic-letsencrypt-certbot-and-nginx-configuration-recipe-3a97).
 
 ### Updating festivalsapp.org
-
-
 ```bash
 curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh
 chmod +x update.sh
