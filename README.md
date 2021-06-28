@@ -39,7 +39,6 @@ The key requirements for the website are: fast, easy to update, open source, acc
     * Plugin recommendations are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 - [minify](https://github.com/tdewolff/minify)
     * For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
-- [php-fpm](https://www.php.net/manual/de/install.fpm.php) 7.4.3+
 
 ### Setup
 
