@@ -47,7 +47,7 @@ The key requirements for the website are: fast, easy to update, open source, acc
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu 20 LTS at [digitalocean](https://www.digitalocean.com/). To deploy the website i first do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup)  
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu 20 LTS at [digitalocean](https://www.digitalocean.com/). To deploy the website you first have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup).
 
 ### Installing festivalsapp.org
 ```bash
@@ -56,6 +56,8 @@ chmod +x install.sh
 sudo ./install.sh
 rm install.sh
 ```
+
+After installing you only need to configure [HTTPS](https://dev.to/joelaberger/no-magic-letsencrypt-certbot-and-nginx-configuration-recipe-3a97).
 
 ### Updating festivalsapp.org
 
