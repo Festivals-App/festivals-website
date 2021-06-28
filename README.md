@@ -43,12 +43,12 @@ The key requirements for the website are: fast, easy to update, open source, acc
 ### Setup
 
 I don't have a special setup in [Visual Studio Code](https://code.visualstudio.com/download) and the provided [configuration files](./.vscode) should let you start right away.
-You only need to install minify on your system to allow the compile script run.
+You only need to install minify on your system to allow the compile script to run.
 
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy the website you have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup) first. Otherwise the are no special requirements for 
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy the website via the install script you have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup) first. Otherwise the are no special requirements for serving this website, except the contact form needs some configuration to allow the system to send emails (TBA).
 
 ### Installing festivalsapp.org
 ```bash
@@ -57,8 +57,7 @@ chmod +x install.sh
 sudo ./install.sh
 rm install.sh
 ```
-
-After installing you only need to configure [HTTPS](https://dev.to/joelaberger/no-magic-letsencrypt-certbot-and-nginx-configuration-recipe-3a97).
+After installing you still need to configure [HTTPS](https://dev.to/joelaberger/no-magic-letsencrypt-certbot-and-nginx-configuration-recipe-3a97).
 
 ### Updating festivalsapp.org
 ```bash
@@ -71,7 +70,10 @@ rm update.sh
 
 # Documentation & Architecture
 
-TBA
+There is not a lot that is custom about the website. The base locale of the website is german, localized versions of the website 
+are stored inside a top level folder with a descriptive name, like 'EN' for the english localization. Images are all stored in a 
+top level folder called images and need to be compressed and optimized by hand, as the compile script won't attempt any optimizations 
+on the images.
 
 The general documentation for the Festivals App is in the [festivals-documentation](https://github.com/festivals-app/festivals-documentation) repository. The documentation repository contains architecture information, general deployment documentation, templates and other helpful documents.
 
