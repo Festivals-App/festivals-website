@@ -10,7 +10,7 @@
     
     $body = "From: $name\n E-Mail: $email\n\n Message:\n $message";
     
-    $URL="../support.html";
+    $URL="../contact.html";
     echo '<META HTTP-EQUIV="refresh" content="3;URL=' . $URL . '">';
     echo "<script type='text/javascript'>setTimeout(function () { document.location.href='{$URL}; }, 3000);</script>";
     
