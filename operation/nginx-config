@@ -20,6 +20,16 @@ server {
         try_files $uri $uri/ =404;
     }
 
+    # Enable PHP handling by the fastcgi-php server
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        
+        # Mitigate https://httpoxy.org/ vulnerabilities
+        fastcgi_param HTTP_PROXY "";
+
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+    }
+
     # Security settings recommended by Mozilla Observatory https://observatory.mozilla.org/
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Frame-Options DENY;
