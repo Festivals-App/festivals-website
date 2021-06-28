@@ -47,10 +47,9 @@ The key requirements for the website are: fast, easy to update, open source, acc
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve [festivalsapp.org](https://festivalsapp.org/), so the website needs to go to /var/www/festivalsapp.org
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu 20 LTS at [digitalocean](https://www.digitalocean.com/). To deploy the website i first do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup)  
 
-Installing
-The install script will place all necessary files, but need some additional nginx and ssl setup.
+### Installing festivalsapp.org
 ```bash
 curl -o install.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/install.sh
 chmod +x install.sh
@@ -58,20 +57,14 @@ sudo ./install.sh
 rm install.sh
 ```
 
-Updating
+### Updating festivalsapp.org
+
+
 ```bash
 curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh
 chmod +x update.sh
 sudo ./update.sh
 rm update.sh
-```
-
-Uninstalling
-```bash
-curl -o uninstall.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/uninstall.sh
-chmod +x uninstall.sh
-sudo ./uninstall.sh
-rm uninstall.sh
 ```
 
 
