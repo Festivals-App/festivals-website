@@ -20,6 +20,13 @@ server {
         try_files $uri $uri/ =404;
     }
 
+    # Check if festival query argument was provided and redirect to beta test landingpage
+    location / {
+        if ($arg_festival) {
+            return 302 https://festivalsapp.org/beta-test.html;
+        }
+    }
+
     # Enable PHP handling by the fastcgi-php server
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
