@@ -15,13 +15,12 @@ server {
         default_type application/json;
     }
 
-    # Check if file exists and return 404 if not 
     location / {
-        try_files $uri $uri/ =404;
-    }
 
-    # Check if festival query argument was provided and redirect to beta test landingpage
-    location / {
+        # Check if file exists and return 404 if not 
+        try_files $uri $uri/ =404;
+
+        # Check if festival query argument was provided and redirect to beta test landingpage
         if ($arg_festival) {
             return 302 https://festivalsapp.org/beta-test.html;
         }
