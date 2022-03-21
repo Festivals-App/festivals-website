@@ -10,13 +10,15 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-    
       - uses: actions/checkout@v2
     
       - name: Step 1 - Prepare build environment
         run: sudo apt install minify -y
+        
+      - name: Step 2 - DEBUG
+        run: ls -a
     
-      - name: Step 2 - Compile website
+      - name: Step 3 - Compile website
         run: |
           chmod +x compile.sh
           ./compile.sh
