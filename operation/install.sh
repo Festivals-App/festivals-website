@@ -2,7 +2,7 @@
 #
 # install.sh 1.0.0
 # 
-# (c)2020-2021 Simon Gaus
+# (c)2020-2022 Simon Gaus
 #
 
 # Move to working directory
@@ -20,24 +20,24 @@ fi
 #
 if ! command -v minify > /dev/null; then
   echo "Installing minify..."
-  apt-get install minify -y > /dev/null;
+  apt install minify -y > /dev/null;
 fi
 
 # Install git if needed.
 #
 if ! command -v git > /dev/null; then
   echo "Installing git..."
-  apt-get install git -y > /dev/null;
+  apt install git -y > /dev/null;
 fi
 
 # Install curl if needed.
 #
 if ! command -v curl > /dev/null; then
   echo "Installing curl..."
-  apt-get install curl -y > /dev/null;
+  apt install curl -y > /dev/null;
 fi
 
-# Use the upgrade script to instal newest website
+# Use the upgrade script to install newest website
 #
 curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh > /dev/null;
 chmod +x update.sh
