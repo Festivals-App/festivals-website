@@ -30,11 +30,10 @@ jobs:
       - name: Step 5 - Tar and compress
         run: |
           tar -zcvf festivals-website.tar.gz *
-          cd ../../
           
       - name: Step 6 - Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/current/festivals-website.tar.gz
+          file: festivals-website.tar.gz
           tag: ${{ github.ref }}
