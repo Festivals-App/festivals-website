@@ -1,5 +1,5 @@
 # Publish GitHub workflow artifacts tutorial example
-name: Publish GitHub Actions Artifacts Example
+name: Release website
 
 on: 
   release:
@@ -12,19 +12,29 @@ jobs:
     steps:
       - uses: actions/checkout@v2
     
-      - name: Step 1 - Prepare build environment
+      - name: Step 1 - Prepare compile environment
         run: sudo apt install minify -y
-        
-      - name: Step 2 - DEBUG
-        run: ls -a
     
-      - name: Step 3 - Compile website
+      - name: Step 2 - Compile website
         run: |
           chmod +x compile.sh
           ./compile.sh
+          cd build/current
+          
+      - name: Step 3 - Create version file
+        run: echo "$(echo ${GITHUB_REF} | rev | cut -d'/' -f 1 | rev )" >> version
+      
+      - name: Step 4 - Create compile_date file
+        run: echo "$(date)" >> compile_date
         
-      - name: Step 3 - Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: assets-for-download
-          path: build/current
+      - name: Step 5 - Tar and compress
+        run: |
+          tar -zcvf festivals-website.tar.gz *
+          cd ../../
+          
+      - name: Step 6 - Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/current/festivals-website.tar.gz
+          tag: ${{ github.ref }}
