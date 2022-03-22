@@ -33,7 +33,7 @@ jobs:
       - name: Step 5 - Tar and compress
         run: |
           cd build/current
-          tar -zcvf festivals-website.tar.gz *
+          tar -zcvf festivals-website.tar.gz * .well-known
           
       - name: Step 6 - Upload to Release
         uses: svenstaro/upload-release-action@v2
