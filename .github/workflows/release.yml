@@ -20,22 +20,25 @@ jobs:
           chmod +x compile.sh
           ./compile.sh
           
-      - name: Step 3 - Create version file
+      - name: Step 3 - Copy NGINX config into compiled website folder
+        run: \cp operation/nginx-config build/current
+        
+      - name: Step 4 - Create version file
         run: |
           cd build/current 
           echo "$(echo ${GITHUB_REF} | rev | cut -d'/' -f 1 | rev )" >> version
       
-      - name: Step 4 - Create compile_date file
+      - name: Step 5 - Create compile_date file
         run: |
           cd build/current
           echo "$(date)" >> compile_date
         
-      - name: Step 5 - Tar and compress
+      - name: Step 6 - Tar and compress
         run: |
           cd build/current
           tar -zcvf festivals-website.tar.gz * .well-known
           
-      - name: Step 6 - Upload to Release
+      - name: Step 7 - Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
