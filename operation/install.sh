@@ -5,54 +5,59 @@
 # (c)2020-2022 Simon Gaus
 #
 
-# Move to working directory
+# Check for NGINX
 #
-cd /usr/local || exit
-
-# Check for nginx
-# 
 if ! command -v nginx > /dev/null; then
-  echo "NGINX is not installed. Please setup the environment properly before running this script. Exiting."
+  echo "NGINX is not installed. Exiting."
   exit 1
 fi
 
-# Install minify if needed.
+# Move to working dir
 #
-if ! command -v minify > /dev/null; then
-  echo "Installing minify..."
-  apt install minify -y > /dev/null;
-fi
+mkdir /usr/local/festivals-website || { echo "Failed to create working directory. Exiting." ; exit 1; }
+cd /usr/local/festivals-website || { echo "Failed to access working directory. Exiting." ; exit 1; }
 
-# Install git if needed.
-#
-if ! command -v git > /dev/null; then
-  echo "Installing git..."
-  apt install git -y > /dev/null;
-fi
+echo "Installing festivals-website"
+sleep 1
 
-# Install curl if needed.
+# Download and extract the latest website release
 #
-if ! command -v curl > /dev/null; then
-  echo "Installing curl..."
-  apt install curl -y > /dev/null;
-fi
+echo "Downloading latest festivals-website files"
+sleep 1
+file_url="https://github.com/Festivals-App/festivals-website/releases/latest/download/festivals-website.tar.gz"
+curl -L "$file_url" -o festivals-website.tar.gz
+tar -xzvf festivals-website.tar.gz
+rm festivals-website.tar.gz
 
-# Use the upgrade script to install newest website
+# Stop nginx if running
 #
-curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh > /dev/null;
-chmod +x update.sh
-./update.sh
-rm update.sh
+systemctl stop nginx
 
 # Install the nginx config file
 #
-systemctl stop nginx
 echo "Installing the nginx configuration file"
-mkdir -p /usr/local/festivals-website
-cd /usr/local/festivals-website || exit
-curl -o nginx-config https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/nginx-config > /dev/null;
+mkdir -p /etc/nginx/sites-available || { echo "Failed to create sites-available directory. Exiting." ; exit 1; }
 cp nginx-config /etc/nginx/sites-available/festivalsapp.org
+rm nginx-config
 ln -s /etc/nginx/sites-available/festivalsapp.org /etc/nginx/sites-enabled/
+
+# Install the website files
+#
+mkdir -p /var/www/festivalsapp.org
+cp -a ./. /var/www/festivalsapp.org/
+chown -R $USER:$USER /var/www/festivalsapp.org
+chmod -R 755 /var/www/festivalsapp.org
+
+# Start nginx
+#
 systemctl start nginx
 
+# Delete working dir
+#
+echo "Cleanup..."
+cd /usr/local || exit
+rm -R /usr/local/festivals-website
+sleep 1
+
 echo "Now you need to setup ssl and you are ready to go."
+sleep 1
