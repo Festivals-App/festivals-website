@@ -3,7 +3,7 @@
 # compile.sh 1.0.0
 #
 # All necessary files are in the ./source folder waiting to get compiled by this script.
-# It is minifying and merging those files and is outputting the result to a folder that is called "build". 
+# It is minifying and merging those files and is outputting the result to a folder that is called "out". 
 # This folder now contains a new folder with the current timestamp as its name and a folder called "current". 
 # The "current" folder will always contain the newest compiled files, and can be used to check the latest changes 
 # to the source files using a browser.
@@ -29,8 +29,8 @@ fi
 # 
 current_time="$(date +"%Y%m%d-%H-%M-%S")"
 source_path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )/source"
-build_path="build/$current_time"
-current_build_path="build/current"
+build_path="out/$current_time"
+current_build_path="out/current"
 
 mkdir -p "$build_path"
 cp "$source_path"/* "$build_path" 2>/dev/null

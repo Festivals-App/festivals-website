@@ -1,6 +1,6 @@
 # Project Rules
 festivals-website-node
-build/*
+out/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/go,macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=go,macos,visualstudiocode

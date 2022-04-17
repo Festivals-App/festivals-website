@@ -5,15 +5,10 @@ In order to make contributing to the
 as accessible as possible, the website is developed only with free and
 open source applications which are available on for every major OS.
 
-## Atom Editor
+## Visual Studio Code
 
-Download and install the [Atom Editor](https://atom.io/).
-
-Installed Atom Packets:
-  * language-applescript
-  * build-osa
-    dependencies: build, busy-signal
-  * pp-markdown
+Download and install the [Visual Studio Code](https://code.visualstudio.com/download).
+    * Plugin recommendations are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 
 
 ## NGINX webserver
@@ -33,7 +28,7 @@ location / {
 to
 ```
 location / {
-    root   <path/to/project/folder>/build/current;
+    root   <path/to/project/folder>/out/current;
 ```
 
 ## Minify (HTML/CSS minifier)
