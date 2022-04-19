@@ -38,14 +38,13 @@ echo "Downloading latest festivals-website release"
 sleep 1
 file_url="https://github.com/Festivals-App/festivals-website/releases/latest/download/festivals-website.tar.gz"
 curl -L "$file_url" -o festivals-website.tar.gz
-tar -xzvf festivals-website.tar.gz
+tar -xzf festivals-website.tar.gz
 rm festivals-website.tar.gz
 
 # Install the nginx config file
 #
 mkdir -p /etc/nginx/sites-available || { echo "Failed to create sites-available directory. Exiting." ; exit 1; }
-cp nginx-config /etc/nginx/sites-available/festivalsapp.org
-rm nginx-config
+mv nginx-config /etc/nginx/sites-available/festivalsapp.org
 ln -s /etc/nginx/sites-available/festivalsapp.org /etc/nginx/sites-enabled/
 echo "Installed the nginx configuration file"
 sleep 1
@@ -53,7 +52,6 @@ sleep 1
 ## Prepare website update workflow
 #
 mv update_website.sh /usr/local/festivals-website/update.sh
-rm update_website.sh
 cp /etc/sudoers /tmp/sudoers.bak
 echo "$WEB_USER ALL = (ALL) NOPASSWD: /usr/local/festivals-website/update.sh" >> /tmp/sudoers.bak
 
