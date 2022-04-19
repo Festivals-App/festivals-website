@@ -5,6 +5,18 @@
 # (c)2020-2022 Simon Gaus
 #
 
+# Test for web server user
+#
+WEB_USER="www-data"
+id -u "$WEB_USER" &>/dev/null;
+if [ $? -ne 0 ]; then
+  WEB_USER="www"
+  if [ $? -ne 0 ]; then
+    echo "Failed to find user to run web server. Exiting."
+    exit 1
+  fi
+fi
+
 # Check for NGINX
 #
 if ! command -v nginx > /dev/null; then
@@ -14,10 +26,10 @@ fi
 
 # Move to working dir
 #
-mkdir /usr/local/festivals-website || { echo "Failed to create working directory. Exiting." ; exit 1; }
-cd /usr/local/festivals-website || { echo "Failed to access working directory. Exiting." ; exit 1; }
+mkdir /usr/local/festivals-website/install || { echo "Failed to create working directory. Exiting." ; exit 1; }
+cd /usr/local/festivals-website/install || { echo "Failed to access working directory. Exiting." ; exit 1; }
 
-echo "Installing festivals-website"
+echo "Updating festivals-website"
 sleep 1
 
 # Download and extract the latest website release
@@ -29,35 +41,26 @@ curl -L "$file_url" -o festivals-website.tar.gz
 tar -xzvf festivals-website.tar.gz
 rm festivals-website.tar.gz
 rm nginx-config
-
-# Stop nginx if running
-#
-echo "Stopping NGINX"
-sleep 1
-systemctl stop nginx
+rm update_website.sh
 
 # Install the website files
 #
 echo "Copying the festivals-website files"
 sleep 1
+systemctl stop nginx
 rm -rf /var/www/festivalsapp.org
 mkdir -p /var/www/festivalsapp.org
 cp -a ./. /var/www/festivalsapp.org/
-chown -R $USER:$USER /var/www/festivalsapp.org
+chown -R $WEB_USER:$WEB_USER /var/www/festivalsapp.org
 chmod -R 755 /var/www/festivalsapp.org
-
-# Start nginx
-#
-echo "Starting NGINX"
-sleep 1
 systemctl start nginx
 
 # Delete working dir
 #
 echo "Cleanup..."
 cd /usr/local || exit
-rm -R /usr/local/festivals-website
+rm -R /usr/local/festivals-website/install
 sleep 1
 
-echo "Now you need to setup ssl and you are ready to go."
+echo "Done!"
 sleep 1

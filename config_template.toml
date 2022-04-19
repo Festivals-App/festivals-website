@@ -1,0 +1,14 @@
+# festivals-website-node configuration file v1.0
+# TOML 1.0.0-rc.2+
+
+[service]
+bind-address = "localhost"
+port = 48155
+key = "TEST_API_KEY_001"
+
+[heartbeat]
+endpoint = "localhost"
+
+[authentication]
+api-keys = ["TEST_API_KEY_001", "TEST_API_KEY_002", "TEST_API_KEY_003"]
+admin-keys = ["TEST_API_KEY_001"]
