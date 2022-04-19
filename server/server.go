@@ -58,8 +58,8 @@ func (s *Server) setRoutes() {
 	s.Router.Get("/info", s.handleRequestWithoutAuthentication(handler.GetInfo))
 	s.Router.Get("/health", s.handleRequestWithoutAuthentication(handler.GetHealth))
 
-	s.Router.Post("/update", s.handleAdminRequest(handler.MakeUpdate))
 	s.Router.Post("/update/website", s.handleAdminRequest(handler.MakeWebsiteUpdate))
+	s.Router.Post("/update", s.handleAdminRequest(handler.MakeUpdate))
 	s.Router.Get("/log", s.handleAdminRequest(handler.GetLog))
 }
 
