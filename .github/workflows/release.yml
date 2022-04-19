@@ -1,5 +1,5 @@
 # Publish GitHub workflow artifacts tutorial example
-name: Release website
+name: Release website and website node
 
 on: 
   release:
