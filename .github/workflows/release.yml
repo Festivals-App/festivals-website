@@ -35,7 +35,7 @@ jobs:
         asset_name: festivals-website-node-${{ matrix.goos }}-${{ matrix.goarch }}
         build_flags: -v
         ldflags: -X 'github.com/Festivals-App/festivals-website/server/status.ServerVersion=${{ env.APP_VERSION }}' -X 'github.com/Festivals-App/festivals-website/server/status.BuildTime=${{ env.BUILD_TIME }}' -X 'github.com/Festivals-App/festivals-website/server/status.GitRef=${{ github.ref }}'
-        extra_files: LICENSE README.md config_template.toml operation/service_template.service operation/update.sh
+        extra_files: LICENSE README.md config_template.toml operation/service_template.service operation/update_node.sh
 
   archive-build-artifacts:
     name: Release website
