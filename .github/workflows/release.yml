@@ -78,3 +78,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: out/current/festivals-website.tar.gz
           tag: ${{ github.ref }}
+
+      - name: Step 9 - Trigger website update
+        run: |
+          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://website.festivalsapp.org/update
