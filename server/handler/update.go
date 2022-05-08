@@ -11,7 +11,7 @@ import (
 
 func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
-	newVersion, err := update.RunUpdate(status.ServerVersion, "https://github.com/Festivals-App/festivals-website/releases/latest", "/usr/local/festivals-website-node/update.sh")
+	newVersion, err := update.RunUpdate(status.ServerVersion, "Festivals-App", "festivals-website", "/usr/local/festivals-website-node/update.sh")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to update")
 		respondError(w, http.StatusInternalServerError, "Failed to update")
@@ -23,7 +23,7 @@ func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
 func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
-	newVersion, err := update.RunUpdate(status.ServerVersion, "<alwaysupdate>", "/usr/local/festivals-website/update.sh")
+	newVersion, err := update.RunUpdate(status.ServerVersion, "Festivals-App", "festivals-website", "/usr/local/festivals-website/update.sh")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to update")
 		respondError(w, http.StatusInternalServerError, "Failed to update")
