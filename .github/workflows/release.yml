@@ -82,4 +82,4 @@ jobs:
 
       - name: Step 9 - Trigger website update
         run: |
-          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://website.festivalsapp.org/update
+          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://website.festivalsapp.org/update/website
