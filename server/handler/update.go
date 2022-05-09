@@ -3,6 +3,7 @@ package handler
 import (
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/Festivals-App/festivals-gateway/server/update"
 	"github.com/Festivals-App/festivals-website/server/config"
@@ -31,7 +32,7 @@ func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Reque
 		return
 	}
 
-	newVersion, err := update.RunUpdate(string(content), "Festivals-App", "festivals-website", "/usr/local/festivals-website/update.sh")
+	newVersion, err := update.RunUpdate(strings.TrimSpace(string(content)), "Festivals-App", "festivals-website", "/usr/local/festivals-website/update.sh")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to update")
 		respondError(w, http.StatusInternalServerError, "Failed to update")
