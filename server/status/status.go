@@ -7,14 +7,14 @@ import (
 var ServerVersion string
 var BuildTime string
 var GitRef string
-var SeviceIdentifier string = "festivals-website"
+var SeviceIdentifier string = "festivals-website-node"
 
 func VersionString() string {
 	return ServerVersion
 }
 
 func InfoString() interface{} {
-	resultMap := map[string]interface{}{"Version": ServerVersion, "BuildTime": BuildTime, "GitRef": GitRef, "SeviceIdentifier": SeviceIdentifier}
+	resultMap := map[string]interface{}{"Version": ServerVersion, "BuildTime": BuildTime, "GitRef": GitRef, "Sevice": SeviceIdentifier}
 	return resultMap
 }
 
