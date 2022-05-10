@@ -148,7 +148,7 @@ fi
 if command -v ufw > /dev/null; then
 
   ufw allow 48155/tcp >/dev/null
-  echo "Added festivals-server to ufw using port 48155."
+  echo "Added festivals-website-node to ufw using port 48155."
   sleep 1
 
 elif ! [ "$(uname -s)" = "Darwin" ]; then
