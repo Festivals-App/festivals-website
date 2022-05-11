@@ -1,4 +1,3 @@
-# Publish GitHub workflow artifacts tutorial example
 name: Release website and website node
 
 on: 

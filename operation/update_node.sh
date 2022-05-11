@@ -2,7 +2,7 @@
 #
 # update.sh 1.0.0
 #
-# Updates the festivals-server and restarts it.
+# Updates the festivals-website-node and restarts it.
 #
 # (c)2020-2022 Simon Gaus
 #
@@ -56,7 +56,7 @@ cd /usr/local/festivals-website-node
 rm -r /usr/local/festivals-website-node/install
 sleep 1
 
-# Restarted the festivals-server
+# Restart the festivals-website-node
 #
 systemctl restart festivals-website-node
 echo "Restarted the festivals-website-node"
