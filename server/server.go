@@ -12,7 +12,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-// Server has router and db instances
+// Server has router and configuration
 type Server struct {
 	Router *chi.Mux
 	Config *config.Config
@@ -22,11 +22,8 @@ type Server struct {
 func (s *Server) Initialize(config *config.Config) {
 
 	s.Router = chi.NewRouter()
-
 	s.Config = config
-
 	s.setMiddleware()
-	s.setWalker()
 	s.setRoutes()
 }
 
@@ -34,21 +31,10 @@ func (s *Server) setMiddleware() {
 	// tell the ruter which middleware to use
 	s.Router.Use(
 		// used to log the request to the console | development
-		logger.Middleware(&log.Logger),
+		logger.Middleware(logger.TraceLogger("/var/log/festivals-website-node/trace.log")),
 		// tries to recover after panics
 		middleware.Recoverer,
 	)
-}
-
-func (s *Server) setWalker() {
-
-	walkFunc := func(method string, route string, handler http.Handler, middlewares ...func(http.Handler) http.Handler) error {
-		log.Info().Msg(method + " " + route + " \n")
-		return nil
-	}
-	if err := chi.Walk(s.Router, walkFunc); err != nil {
-		log.Panic().Msg(err.Error())
-	}
 }
 
 // setRouters sets the all required routers
@@ -61,6 +47,7 @@ func (s *Server) setRoutes() {
 	s.Router.Post("/update/website", s.handleAdminRequest(handler.MakeWebsiteUpdate))
 	s.Router.Post("/update", s.handleAdminRequest(handler.MakeUpdate))
 	s.Router.Get("/log", s.handleAdminRequest(handler.GetLog))
+	s.Router.Get("/log/trace", s.handleAdminRequest(handler.GetTraceLog))
 }
 
 // Run the server on it's router
@@ -73,12 +60,14 @@ func (s *Server) Run(host string) {
 // function prototype to inject config instance in handleRequest()
 type RequestHandlerFunction func(config *config.Config, w http.ResponseWriter, r *http.Request)
 
+/*
 func (s *Server) handleRequest(handler RequestHandlerFunction) http.HandlerFunc {
 
 	return authentication.IsEntitled(s.Config.APIKeys, func(w http.ResponseWriter, r *http.Request) {
 		handler(s.Config, w, r)
 	})
 }
+*/
 
 func (s *Server) handleAdminRequest(requestHandler RequestHandlerFunction) http.HandlerFunc {
 
