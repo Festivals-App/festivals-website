@@ -3,6 +3,8 @@ github.com/Festivals-App/festivals-gateway v1.2.6 h1:yWDfAI6ugQJmq7tag179TSGeboA
 github.com/Festivals-App/festivals-gateway v1.2.6/go.mod h1:Ic4xIepiEKCreKL4H4bgmv+hdZtOuH1hLDJLBgVuYWg=
 github.com/Festivals-App/festivals-gateway v1.3.0 h1:UY7omwR0OSFpvHgz4Bh2GkzedsjM7q5mVwSHPYaSpzk=
 github.com/Festivals-App/festivals-gateway v1.3.0/go.mod h1:yquiIbjTJG+dTK2i6SmzvbVTfYPDnW0SI66+O5aobmw=
+github.com/Festivals-App/festivals-gateway v1.4.0 h1:MOKB43MPTM8uMjBw5sAWcCik8eIZ0LJ4NgAe+50Z7vQ=
+github.com/Festivals-App/festivals-gateway v1.4.0/go.mod h1:xzXImN6APnLQ0kuspQadKXxddsryRyiIri7MAfiqgAQ=
 github.com/Festivals-App/festivals-identity-server v0.0.0-20220303023324-f741680114a8 h1:O5y2fPKALg1msCI9nRSrfkL70JVYBvSTzZ7CJBDxEBU=
 github.com/Festivals-App/festivals-identity-server v0.0.0-20220303023324-f741680114a8/go.mod h1:UsxekAlnCGX6skDRl2tMeI0lbKiSDQ08+p2WfdH+Yvc=
 github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
@@ -30,6 +32,8 @@ github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27k
 github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
 github.com/mattn/go-isatty v0.0.17 h1:BTarxUcIeDqL27Mc+vyvdWYSL28zpIhv3RoTdsLMPng=
 github.com/mattn/go-isatty v0.0.17/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
+github.com/mattn/go-isatty v0.0.18 h1:DOKFKCQ7FNG2L1rbrmstDN4QVRdS89Nkh85u68Uwp98=
+github.com/mattn/go-isatty v0.0.18/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/pelletier/go-toml v1.9.5 h1:4yBQzkHv+7BHq2PQUZF3Mx0IYxG7LsP222s7Agd3ve8=
 github.com/pelletier/go-toml v1.9.5/go.mod h1:u1nR/EPcESfeI/szUZKdtJ0xRNbUoANCkoOuaOx1Y+c=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
@@ -68,6 +72,8 @@ golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.6.0 h1:MVltZSvRTcU2ljQOhs94SXPftV6DCNnZViHeQps87pQ=
 golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.7.0 h1:3jlCCIQZPdOYu1h8BkNvLz8Kgwtae2cagcG/VamtZRU=
+golang.org/x/sys v0.7.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
