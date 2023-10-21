@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/Festivals-App/festivals-gateway/server/update"
@@ -25,7 +25,7 @@ func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
 func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
-	content, err := ioutil.ReadFile("/var/www/festivalsapp.org/version")
+	content, err := os.ReadFile("/var/www/festivalsapp.org/version")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to read current version from file")
 		respondError(w, http.StatusInternalServerError, "Failed to update")

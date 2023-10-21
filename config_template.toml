@@ -3,8 +3,14 @@
 
 [service]
 bind-address = "localhost"
+bind-host = "localhost"
 port = 48155
 key = "TEST_API_KEY_001"
+
+[tls]
+festivaslapp-root-ca = "/usr/local/festivals-website-node/ca.crt"
+cert = "/usr/local/festivals-website-node/server.crt"
+key = "/usr/local/festivals-website-node/server.key"
 
 [heartbeat]
 endpoint = "localhost"
