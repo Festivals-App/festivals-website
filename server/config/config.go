@@ -18,6 +18,9 @@ type Config struct {
 	LoversEar          string
 	APIKeys            []string
 	AdminKeys          []string
+	WebsiteBindHost    string
+	WebsitePort        int
+	WebsiteProtocol    string
 }
 
 func DefaultConfig() *Config {
@@ -69,6 +72,10 @@ func ParseConfig(cfgFile string) *Config {
 		adminKeys[i] = v.(string)
 	}
 
+	websiteBindHost := content.Get("website.bind-host").(string)
+	websitePort := content.Get("website.port").(int64)
+	websiteProtocol := content.Get("website.protocol").(string)
+
 	return &Config{
 		ServiceBindAddress: serviceBindAdress,
 		ServiceBindHost:    serviceBindHost,
@@ -80,6 +87,9 @@ func ParseConfig(cfgFile string) *Config {
 		LoversEar:          loversear,
 		APIKeys:            keys,
 		AdminKeys:          adminKeys,
+		WebsiteBindHost:    websiteBindHost,
+		WebsitePort:        int(websitePort),
+		WebsiteProtocol:    websiteProtocol,
 	}
 }
 
