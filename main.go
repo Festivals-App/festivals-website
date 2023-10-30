@@ -47,7 +47,7 @@ func sendNodeHeartbeat(conf *config.Config) {
 		<-timer
 
 		var nodeBeat *heartbeat.Heartbeat = &heartbeat.Heartbeat{Service: "festivals-website-node", Host: "https://" + conf.ServiceBindHost, Port: conf.ServicePort, Available: true}
-		err := heartbeat.SendHeartbeat(conf.LoversEar, conf.ServiceKey, nodeBeat)
+		err := heartbeat.SendHeartbeat(conf.LoversEar, conf.ServiceKey, conf.TLSCert, conf.TLSKey, conf.TLSRootCert, nodeBeat)
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to send website node heartbeat")
 		}
@@ -60,7 +60,7 @@ func sendSiteHeartbeat(conf *config.Config) {
 		<-timer
 
 		var siteBeat *heartbeat.Heartbeat = &heartbeat.Heartbeat{Service: "festivals-website", Host: conf.WebsiteProtocol + "://" + conf.WebsiteBindHost, Port: conf.WebsitePort, Available: true}
-		err := heartbeat.SendHeartbeat(conf.LoversEar, conf.ServiceKey, siteBeat)
+		err := heartbeat.SendHeartbeat(conf.LoversEar, conf.ServiceKey, conf.TLSCert, conf.TLSKey, conf.TLSRootCert, siteBeat)
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to send website heartbeat")
 		}
