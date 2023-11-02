@@ -9,8 +9,15 @@
     <br/><br/>
     FestivalsApp: Website
     <br/><br/>
-</h1>
+</h1
 
+This repository contains the source files of the official website for the FestivalsApp as it is available at [festivalsapp.org](https://festivalsapp.org/) 
+and a lightweight go sidecar app, called festivals-website-node. The festivals-website-node will register with the festivals-gateway discovery service and exposes other
+functions including updating the website.
+
+![Figure 1: Architecture Overview Highlighted](https://github.com/Festivals-App/festivals-documentation/blob/main/images/architecture/overview_website.png "Figure 1: Architecture Overview Highlighted")
+
+<hr/>
 <p align="center">
   <a href="#development">Development</a> •
   <a href="#deployment">Deployment</a> • 
@@ -19,10 +26,7 @@
   <a href="#licensing">Licensing</a> •
   <a href="https://festivalsapp.org">Website</a>
 </p>
-
-This repository contains the source files of the official website for the FestivalsApp as it is available at [festivalsapp.org](https://festivalsapp.org/).
-
-![Figure 1: Architecture Overview Highlighted](https://github.com/Festivals-App/festivals-documentation/blob/main/images/architecture/overview_website.png "Figure 1: Architecture Overview Highlighted")
+<hr/>
 
 ## Development
 
@@ -38,7 +42,7 @@ The key requirements for the website are: fast, easy to update, open source, acc
 ### Requirements
 
 - [Bash script](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) friendly environment
-- [Visual Studio Code](https://code.visualstudio.com/download) 1.66.2+
+- [Visual Studio Code](https://code.visualstudio.com/download) 1.84.0+
     * Plugin recommendations are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 - [minify](https://github.com/tdewolff/minify)
     * For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
@@ -47,7 +51,6 @@ The key requirements for the website are: fast, easy to update, open source, acc
 
 I don't have a special setup in [Visual Studio Code](https://code.visualstudio.com/download) and the provided [configuration files](./.vscode) should let you start right away.
 You only need to install minify on your system to allow the compile script to run.
-
 
 ## Deployment
 
@@ -70,7 +73,6 @@ sudo ./update.sh
 rm update.sh
 ```
 
-
 # Documentation & Architecture
 
 There is not a lot that is custom about the website. The base locale of the website is german, localized versions of the website 
@@ -79,7 +81,6 @@ top level folder called images and need to be compressed and optimized by hand, 
 on the images.
 
 The general documentation for the Festivals App is in the [festivals-documentation](https://github.com/festivals-app/festivals-documentation) repository. The documentation repository contains architecture information, general deployment documentation, templates and other helpful documents.
-
 
 # Engage & Feedback
 
@@ -95,7 +96,7 @@ The best place to discuss questions and suggestions regarding the website is the
 
 ## Licensing
 
-Copyright (c) 2017-2021 Simon Gaus.
+Copyright (c) 2017-2023 Simon Gaus.
 
 Licensed under the **GNU Lesser General Public License v3.0** (the "License"); you may not use this file except in compliance with the License.
 
