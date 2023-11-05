@@ -22,4 +22,4 @@ admin-keys = ["TEST_API_KEY_001"]
 [website]
 bind-host = "localhost"
 port = 8080
-protocol = "http"
+protocol = "https"
