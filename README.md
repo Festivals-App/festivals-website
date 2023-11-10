@@ -67,10 +67,18 @@ After installing you still need to configure [HTTPS](https://dev.to/joelaberger/
 
 ### Updating festivalsapp.org
 ```bash
-curl -o update.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update.sh
-chmod +x update.sh
-sudo ./update.sh
-rm update.sh
+curl -o update_website.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update_website.sh
+chmod +x update_website.sh
+sudo ./update_website.sh
+rm update_website.sh
+```
+
+### Updating festivals-website-node
+```bash
+curl -o update_node.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/update_node.sh
+chmod +x update_node.sh
+sudo ./update_node.sh
+rm update_node.sh
 ```
 
 # Documentation & Architecture
