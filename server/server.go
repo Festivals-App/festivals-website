@@ -4,10 +4,10 @@ import (
 	"crypto/tls"
 	"net/http"
 	"strconv"
+	"time"
 
-	"github.com/Festivals-App/festivals-gateway/server/logger"
-	"github.com/Festivals-App/festivals-identity-server/authentication"
 	festivalspki "github.com/Festivals-App/festivals-pki"
+	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/Festivals-App/festivals-website/server/config"
 	"github.com/Festivals-App/festivals-website/server/handler"
 	"github.com/go-chi/chi/v5"
@@ -52,7 +52,7 @@ func (s *Server) setMiddleware() {
 	// tell the ruter which middleware to use
 	s.Router.Use(
 		// used to log the request to the console | development
-		logger.Middleware(logger.TraceLogger("/var/log/festivals-website-node/trace.log")),
+		servertools.Middleware(servertools.TraceLogger("/var/log/festivals-website-node/trace.log")),
 		// tries to recover after panics
 		middleware.Recoverer,
 	)
@@ -74,9 +74,13 @@ func (s *Server) setRoutes() {
 func (s *Server) Run(conf *config.Config) {
 
 	server := http.Server{
-		Addr:      conf.ServiceBindHost + ":" + strconv.Itoa(conf.ServicePort),
-		Handler:   s.Router,
-		TLSConfig: s.TLSConfig,
+		ReadTimeout:       10 * time.Second,
+		WriteTimeout:      15 * time.Second,
+		IdleTimeout:       60 * time.Second,
+		ReadHeaderTimeout: 5 * time.Second,
+		Addr:              conf.ServiceBindHost + ":" + strconv.Itoa(conf.ServicePort),
+		Handler:           s.Router,
+		TLSConfig:         s.TLSConfig,
 	}
 
 	if err := server.ListenAndServeTLS("", ""); err != nil {
@@ -98,7 +102,7 @@ func (s *Server) handleRequest(handler RequestHandlerFunction) http.HandlerFunc 
 
 func (s *Server) handleAdminRequest(requestHandler RequestHandlerFunction) http.HandlerFunc {
 
-	return authentication.IsEntitled(s.Config.AdminKeys, func(w http.ResponseWriter, r *http.Request) {
+	return servertools.IsEntitled(s.Config.AdminKeys, func(w http.ResponseWriter, r *http.Request) {
 		requestHandler(s.Config, w, r)
 	})
 }

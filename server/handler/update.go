@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Festivals-App/festivals-gateway/server/update"
+	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/Festivals-App/festivals-website/server/config"
 	"github.com/Festivals-App/festivals-website/server/status"
 	"github.com/rs/zerolog/log"
@@ -13,14 +13,14 @@ import (
 
 func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 
-	newVersion, err := update.RunUpdate(status.ServerVersion, "Festivals-App", "festivals-website", "/usr/local/festivals-website-node/update.sh")
+	newVersion, err := servertools.RunUpdate(status.ServerVersion, "Festivals-App", "festivals-website", "/usr/local/festivals-website-node/update.sh")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to update")
-		respondError(w, http.StatusInternalServerError, "Failed to update")
+		servertools.RespondError(w, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
 		return
 	}
 
-	respondString(w, http.StatusAccepted, newVersion)
+	servertools.RespondString(w, http.StatusAccepted, newVersion)
 }
 
 func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
@@ -28,16 +28,16 @@ func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Reque
 	content, err := os.ReadFile("/var/www/festivalsapp.org/version")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to read current version from file")
-		respondError(w, http.StatusInternalServerError, "Failed to update")
+		servertools.RespondError(w, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
 		return
 	}
 
-	newVersion, err := update.RunUpdate(strings.TrimSpace(string(content)), "Festivals-App", "festivals-website", "/usr/local/festivals-website/update.sh")
+	newVersion, err := servertools.RunUpdate(strings.TrimSpace(string(content)), "Festivals-App", "festivals-website", "/usr/local/festivals-website/update.sh")
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to update")
-		respondError(w, http.StatusInternalServerError, "Failed to update")
+		servertools.RespondError(w, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
 		return
 	}
 
-	respondString(w, http.StatusAccepted, newVersion)
+	servertools.RespondString(w, http.StatusAccepted, newVersion)
 }
