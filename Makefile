@@ -7,7 +7,7 @@ export
 
 build:
 	./compile.sh
-	go build -v -ldflags="-X 'github.com/Festivals-App/festivals-website/server/status.ServerVersion=$(VERSION)' -X 'github.com/Festivals-App/festivals-website/server/status.BuildTime=$(DATE)' -X 'github.com/Festivals-App/festivals-website/server/status.GitRef=$(REF)'" -o festivals-website-node main.go
+	go build -ldflags="-X 'github.com/Festivals-App/festivals-website/server/status.ServerVersion=$(VERSION)' -X 'github.com/Festivals-App/festivals-website/server/status.BuildTime=$(DATE)' -X 'github.com/Festivals-App/festivals-website/server/status.GitRef=$(REF)'" -o festivals-website-node main.go
 
 install:
 	cp festivals-website-node /usr/local/bin/festivals-website-node
