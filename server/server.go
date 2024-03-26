@@ -3,9 +3,11 @@ package server
 import (
 	"crypto/tls"
 	"net/http"
+	"slices"
 	"strconv"
 	"time"
 
+	token "github.com/Festivals-App/festivals-identity-server/jwt"
 	festivalspki "github.com/Festivals-App/festivals-pki"
 	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/Festivals-App/festivals-website/server/config"
@@ -20,23 +22,36 @@ type Server struct {
 	Router    *chi.Mux
 	Config    *config.Config
 	TLSConfig *tls.Config
+	Validator *token.ValidationService
 }
 
 func NewServer(config *config.Config) *Server {
 	server := &Server{}
-	server.Initialize(config)
+	server.initialize(config)
 	return server
 }
 
 // Initialize the server with predefined configuration
-func (s *Server) Initialize(config *config.Config) {
+func (s *Server) initialize(config *config.Config) {
 
 	s.Router = chi.NewRouter()
 	s.Config = config
 
+	s.setIdentityService()
 	s.setTLSHandling()
 	s.setMiddleware()
 	s.setRoutes()
+}
+
+func (s *Server) setIdentityService() {
+
+	config := s.Config
+
+	val := token.NewValidationService(config.IdentityEndpoint, config.TLSCert, config.TLSKey, config.ServiceKey, true)
+	if val == nil {
+		log.Fatal().Msg("Failed to create validator.")
+	}
+	s.Validator = val
 }
 
 func (s *Server) setTLSHandling() {
@@ -61,14 +76,14 @@ func (s *Server) setMiddleware() {
 // setRouters sets the all required routers
 func (s *Server) setRoutes() {
 
-	s.Router.Get("/version", s.handleRequestWithoutAuthentication(handler.GetVersion))
-	s.Router.Get("/info", s.handleRequestWithoutAuthentication(handler.GetInfo))
-	s.Router.Get("/health", s.handleRequestWithoutAuthentication(handler.GetHealth))
+	s.Router.Get("/version", s.handleRequest(handler.GetVersion))
+	s.Router.Get("/info", s.handleRequest(handler.GetInfo))
+	s.Router.Get("/health", s.handleRequest(handler.GetHealth))
 
-	s.Router.Post("/update/website", s.handleAdminRequest(handler.MakeWebsiteUpdate))
-	s.Router.Post("/update", s.handleAdminRequest(handler.MakeUpdate))
-	s.Router.Get("/log", s.handleAdminRequest(handler.GetLog))
-	s.Router.Get("/log/trace", s.handleAdminRequest(handler.GetTraceLog))
+	s.Router.Post("/update/website", s.handleServiceRequest(handler.MakeWebsiteUpdate))
+	s.Router.Post("/update", s.handleRequest(handler.MakeUpdate))
+	s.Router.Get("/log", s.handleRequest(handler.GetLog))
+	s.Router.Get("/log/trace", s.handleRequest(handler.GetTraceLog))
 }
 
 func (s *Server) Run(conf *config.Config) {
@@ -88,29 +103,42 @@ func (s *Server) Run(conf *config.Config) {
 	}
 }
 
-// function prototype to inject config instance in handleRequest()
-type RequestHandlerFunction func(config *config.Config, w http.ResponseWriter, r *http.Request)
+type JWTAuthenticatedHandlerFunction func(claims *token.UserClaims, w http.ResponseWriter, r *http.Request)
 
-/*
-func (s *Server) handleRequest(handler RequestHandlerFunction) http.HandlerFunc {
-
-	return authentication.IsEntitled(s.Config.APIKeys, func(w http.ResponseWriter, r *http.Request) {
-		handler(s.Config, w, r)
-	})
-}
-*/
-
-func (s *Server) handleAdminRequest(requestHandler RequestHandlerFunction) http.HandlerFunc {
-
-	return servertools.IsEntitled(s.Config.AdminKeys, func(w http.ResponseWriter, r *http.Request) {
-		requestHandler(s.Config, w, r)
-	})
-}
-
-// inject Config in handler functions
-func (s *Server) handleRequestWithoutAuthentication(requestHandler RequestHandlerFunction) http.HandlerFunc {
+func (s *Server) handleRequest(requestHandler JWTAuthenticatedHandlerFunction) http.HandlerFunc {
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		requestHandler(s.Config, w, r)
+
+		claims := token.GetValidClaims(r, s.Validator)
+		if claims == nil {
+			servertools.UnauthorizedResponse(w)
+			return
+		}
+		requestHandler(claims, w, r)
+	})
+}
+
+type ServiceKeyAuthenticatedHandlerFunction func(w http.ResponseWriter, r *http.Request)
+
+func (s *Server) handleServiceRequest(requestHandler ServiceKeyAuthenticatedHandlerFunction) http.HandlerFunc {
+
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		servicekey := token.GetServiceToken(r)
+		if servicekey == "" {
+			claims := token.GetValidClaims(r, s.Validator)
+			if claims != nil && claims.UserRole == token.ADMIN {
+				requestHandler(w, r)
+				return
+			}
+			servertools.UnauthorizedResponse(w)
+			return
+		}
+		allServiceKeys := s.Validator.ServiceKeys
+		if !slices.Contains(*allServiceKeys, servicekey) {
+			servertools.UnauthorizedResponse(w)
+			return
+		}
+		requestHandler(w, r)
 	})
 }

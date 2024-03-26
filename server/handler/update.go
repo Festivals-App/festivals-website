@@ -5,13 +5,19 @@ import (
 	"os"
 	"strings"
 
+	token "github.com/Festivals-App/festivals-identity-server/jwt"
 	servertools "github.com/Festivals-App/festivals-server-tools"
-	"github.com/Festivals-App/festivals-website/server/config"
 	"github.com/Festivals-App/festivals-website/server/status"
 	"github.com/rs/zerolog/log"
 )
 
-func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
+func MakeUpdate(claims *token.UserClaims, w http.ResponseWriter, _ *http.Request) {
+
+	if claims.UserRole != token.ADMIN {
+		log.Error().Msg("User is not authorized to update service.")
+		servertools.UnauthorizedResponse(w)
+		return
+	}
 
 	newVersion, err := servertools.RunUpdate(status.ServerVersion, "Festivals-App", "festivals-website", "/usr/local/festivals-website-node/update.sh")
 	if err != nil {
@@ -23,7 +29,7 @@ func MakeUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
 	servertools.RespondString(w, http.StatusAccepted, newVersion)
 }
 
-func MakeWebsiteUpdate(conf *config.Config, w http.ResponseWriter, _ *http.Request) {
+func MakeWebsiteUpdate(w http.ResponseWriter, _ *http.Request) {
 
 	content, err := os.ReadFile("/var/www/festivalsapp.org/version")
 	if err != nil {
