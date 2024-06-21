@@ -1,5 +1,7 @@
 server {
 
+    listen [::]:443 ssl;
+    listen 443 ssl;
     # Basic configuration
     server_name festivalsapp.org www.festivalsapp.org;
     root /var/www/festivalsapp.org;

@@ -64,6 +64,11 @@ sudo ./install.sh
 rm install.sh
 ```
 After installing you still need to configure [HTTPS](https://dev.to/joelaberger/no-magic-letsencrypt-certbot-and-nginx-configuration-recipe-3a97).
+```bash
+sudo apt install certbot
+
+```
+
 
 ### Updating festivalsapp.org
 ```bash
