@@ -22,9 +22,9 @@ server {
         # Check if file exists and return 404 if not 
         try_files $uri $uri/ =404;
 
-        # Check if festival query argument was provided and redirect to beta test landingpage
+        # Check if festival query argument was provided and redirect to app store landingpage
         if ($arg_festival) {
-            return 302 https://festivalsapp.org/beta-test.html;
+            return 302 https://festivalsapp.org/landingpage.html;
         }
     }
 
