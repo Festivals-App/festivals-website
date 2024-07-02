@@ -52,10 +52,12 @@ rm "$temp_css_file"
 php_source_path="$source_path/php"
 en_source_path="$source_path/en"
 images_source_path="$source_path/images"
+privacy_source_path="$source_path/privacy"
 
 cp -r "$php_source_path" "$build_path"
 cp -r "$en_source_path" "$build_path"
 cp -r "$images_source_path" "$build_path"
+cp -r "$privacy_source_path" "$build_path"
 
 # Handle apple-app-site-association file
 # 
