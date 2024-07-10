@@ -92,6 +92,9 @@ a {
   color: var(--highlight-color);
 }
 
+.missing {
+  color: var(--missing-color);
+}
 
 a:hover {
     color: var(--link-hover-color);
