@@ -15,7 +15,7 @@ This repository contains the source files of the official website for the Festiv
 and a lightweight go sidecar app, called festivals-website-node. The festivals-website-node will register with the festivals-gateway discovery service and exposes other
 functions including updating the website.
 
-![Figure 1: Architecture Overview Highlighted](https://github.com/Festivals-App/festivals-documentation/blob/main/images/architecture/overview_website.png "Figure 1: Architecture Overview Highlighted")
+![Figure 1: Architecture Overview Highlighted](https://github.com/Festivals-App/festivals-documentation/blob/main/images/architecture/architecture_overview_website.svg "Figure 1: Architecture Overview Highlighted")
 
 <hr/>
 <p align="center">
