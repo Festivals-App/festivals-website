@@ -23,7 +23,6 @@ functions including updating the website.
   <a href="#deployment">Deployment</a> • 
   <a href="#documentation-architecture">Documentation & Architecture</a> •
   <a href="#Engage--feedback">Engage & Feedback</a> •
-  <a href="#licensing">Licensing</a> •
   <a href="https://festivalsapp.org">Website</a>
 </p>
 <hr/>
@@ -42,7 +41,8 @@ The key requirements for the website are: fast, easy to update, open source, acc
 ### Requirements
 
 - [Bash script](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) friendly environment
-- [Visual Studio Code](https://code.visualstudio.com/download) 1.84.0+
+- [Golang](https://go.dev/) Version 1.23.5+
+- [Visual Studio Code](https://code.visualstudio.com/download) 1.96.4+
     * Plugin recommendations are managed via [workspace recommendations](https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions).
 - [minify](https://github.com/tdewolff/minify)
     * For installation on macOS via homebrew see [here](https://github.com/tdewolff/minify/issues/253).
@@ -109,4 +109,4 @@ The best place to discuss questions and suggestions regarding the website is the
 
 ## Licensing
 
-Copyright (c) 2017-2024 Simon Gaus. Licensed under the [**GNU Lesser General Public License v3.0**](./LICENSE)
+Copyright (c) 2017-2025 Simon Gaus. Licensed under the [**GNU Lesser General Public License v3.0**](./LICENSE)
