@@ -1,0 +1,4 @@
+[festivals-website-node]
+title=festivals-website-node
+description=Register with the festivals-gateway discovery service and exposes other functions including updating the website.
+ports=48155/tcp

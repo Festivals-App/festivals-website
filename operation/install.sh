@@ -147,7 +147,8 @@ fi
 #
 if command -v ufw > /dev/null; then
 
-  ufw allow 48155/tcp >/dev/null
+  mv ufw_app_profile /etc/ufw/applications.d/festivals-website-node
+  ufw allow festivals-website-node >/dev/null
   echo "Added festivals-website-node to ufw using port 48155."
   sleep 1
 
