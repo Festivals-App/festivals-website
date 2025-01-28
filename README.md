@@ -30,7 +30,7 @@ functions including updating the website.
 ## Development
 
 I have a rather custom development workflow for the FestvialsApp website. This is probably due to my dislike for website development: i can't bring myself to learn the right way.
-Though unconventional, it is quite straight forward as the website only uses html, css and a little bit of php for the contact form. 
+Though unconventional, it is quite straight forward as the website only uses html and css.
 
 All necessary files are in the [source](./source) folder waiting to get compiled by the compile script which is minifying and merging those files and is outputting the result to a folder called "out". This folder now contains a new folder with the current timestamp as its name and a folder called "current". The "current" folder will always contain the newest compiled files, and can be used to check the latest changes to the source files using a browser.
 
@@ -54,7 +54,7 @@ You only need to install minify on your system to allow the compile script to ru
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy the website via the install script you have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup) first. Otherwise the are no special requirements for serving this website, except the contact form needs some configuration to allow the system to send emails (TBA).
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy the website via the install script you have to do the [general VM setup](https://github.com/Festivals-App/festivals-documentation/tree/master/deployment/general-vm-setup) first. Otherwise the are no special requirements for serving this website.
 
 ### Installing festivalsapp.org
 ```bash
