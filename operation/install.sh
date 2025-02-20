@@ -271,7 +271,7 @@ sleep 1
 # ─────────────────────────────────────────────────────────────────────────────
 
 echo -e "\n🧹  Cleaning up installation files..."
-cd cd /usr/local/festivals-website || exit
+cd /usr/local/festivals-website || exit
 rm -rf cd /usr/local/festivals-website/install
 rm -rf cd /usr/local/festivals-website-node/install
 sleep 1
