@@ -3,6 +3,7 @@
 VERSION=development
 DATE=$(shell date +"%d-%m-%Y-%H-%M")
 REF=refs/tags/development
+DEV_PATH_MAC=$(shell echo ~/Library/Containers/org.festivalsapp.project)
 export
 
 build:
@@ -10,26 +11,29 @@ build:
 	go build -ldflags="-X 'github.com/Festivals-App/festivals-website/server/status.ServerVersion=$(VERSION)' -X 'github.com/Festivals-App/festivals-website/server/status.BuildTime=$(DATE)' -X 'github.com/Festivals-App/festivals-website/server/status.GitRef=$(REF)'" -o festivals-website-node main.go
 
 install:
-	cp festivals-website-node /usr/local/bin/festivals-website-node
-	cp config_template.toml /etc/festivals-website-node.conf
-	cp operation/service_template.service /etc/systemd/system/festivals-website-node.service
+	mkdir -p $(DEV_PATH_MAC)/usr/local/bin
+	mkdir -p $(DEV_PATH_MAC)/etc
+	mkdir -p $(DEV_PATH_MAC)/var/log
+	mkdir -p $(DEV_PATH_MAC)/usr/local/festivals-website-node
 
-update:
-	systemctl stop festivals-website-node
-	cp festivals-website-node /usr/local/bin/festivals-website-node
-	systemctl start festivals-website-node
-
-uninstall:
-	systemctl stop festivals-website-node
-	rm /usr/local/bin/festivals-website-node
-	rm /etc/festivals-website-node.conf
-	rm /etc/systemd/system/festivals-website-node.service
+	cp operation/local/ca.crt  $(DEV_PATH_MAC)/usr/local/festivals-website-node/ca.crt
+	cp operation/local/server.crt  $(DEV_PATH_MAC)/usr/local/festivals-website-node/server.crt
+	cp operation/local/server.key  $(DEV_PATH_MAC)/usr/local/festivals-website-node/server.key
+	cp festivals-website-node $(DEV_PATH_MAC)/usr/local/bin/festivals-website-node
+	chmod +x $(DEV_PATH_MAC)/usr/local/bin/festivals-website-node
+	cp operation/local/config_template_dev.toml $(DEV_PATH_MAC)/etc/festivals-website-node.conf
 
 run:
-	./festivals-website-node --debug
+	./festivals-website-node --container="$(DEV_PATH_MAC)"
 
-stop:
-	killall festivals-website-node
+run-dev:
+	$(DEV_PATH_MAC)/usr/local/bin/festivals-identity-server --container="$(DEV_PATH_MAC)" &
+	sleep 1
+	$(DEV_PATH_MAC)/usr/local/bin/festivals-gateway --container="$(DEV_PATH_MAC)" &
+
+stop-dev:
+	killall festivals-gateway
+	killall festivals-identity-server
 
 clean:
 	rm -r festivals-website-node
