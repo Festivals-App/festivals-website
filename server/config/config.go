@@ -9,19 +9,18 @@ import (
 )
 
 type Config struct {
-	ServiceBindAddress string
-	ServiceBindHost    string
-	ServicePort        int
-	ServiceKey         string
-	TLSRootCert        string
-	TLSCert            string
-	TLSKey             string
-	LoversEar          string
-	Interval           int
-	IdentityEndpoint   string
-	WebsiteBindHost    string
-	WebsitePort        int
-	WebsiteProtocol    string
+	ServiceBindHost  string
+	ServicePort      int
+	ServiceKey       string
+	TLSRootCert      string
+	TLSCert          string
+	TLSKey           string
+	LoversEar        string
+	Interval         int
+	IdentityEndpoint string
+	WebsiteBindHost  string
+	WebsitePort      int
+	WebsiteProtocol  string
 }
 
 func DefaultConfig() *Config {
@@ -51,7 +50,6 @@ func ParseConfig(cfgFile string) *Config {
 		log.Fatal().Msg("server initialize: could not read config file at '" + cfgFile + "' with error: " + err.Error())
 	}
 
-	serviceBindAdress := content.Get("service.bind-address").(string)
 	serviceBindHost := content.Get("service.bind-host").(string)
 	servicePort := content.Get("service.port").(int64)
 	serviceKey := content.Get("service.key").(string)
@@ -70,18 +68,17 @@ func ParseConfig(cfgFile string) *Config {
 	websiteProtocol := content.Get("website.protocol").(string)
 
 	return &Config{
-		ServiceBindAddress: serviceBindAdress,
-		ServiceBindHost:    serviceBindHost,
-		ServicePort:        int(servicePort),
-		ServiceKey:         serviceKey,
-		TLSRootCert:        tlsrootcert,
-		TLSCert:            tlscert,
-		TLSKey:             tlskey,
-		LoversEar:          loversear,
-		Interval:           int(interval),
-		IdentityEndpoint:   identity,
-		WebsiteBindHost:    websiteBindHost,
-		WebsitePort:        int(websitePort),
-		WebsiteProtocol:    websiteProtocol,
+		ServiceBindHost:  serviceBindHost,
+		ServicePort:      int(servicePort),
+		ServiceKey:       serviceKey,
+		TLSRootCert:      tlsrootcert,
+		TLSCert:          tlscert,
+		TLSKey:           tlskey,
+		LoversEar:        loversear,
+		Interval:         int(interval),
+		IdentityEndpoint: identity,
+		WebsiteBindHost:  websiteBindHost,
+		WebsitePort:      int(websitePort),
+		WebsiteProtocol:  websiteProtocol,
 	}
 }
