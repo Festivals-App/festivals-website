@@ -1,0 +1,25 @@
+# festivals-website-node configuration file v1.0
+# TOML 1.0.0-rc.2+
+
+[service]
+bind-address = "localhost"
+bind-host = "localhost"
+port = 48155
+key = "TEST_API_KEY_001"
+
+[tls]
+festivaslapp-root-ca = "/usr/local/festivals-website-node/ca.crt"
+cert = "/usr/local/festivals-website-node/server.crt"
+key = "/usr/local/festivals-website-node/server.key"
+
+[heartbeat]
+endpoint = "localhost"
+interval = 6
+
+[authentication]
+endpoint = "localhost"
+
+[website]
+bind-host = "localhost"
+port = 8080
+protocol = "https"
