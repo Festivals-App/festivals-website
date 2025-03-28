@@ -2,23 +2,27 @@
 # TOML 1.0.0-rc.2+
 
 [service]
-bind-host = "localhost"
+bind-host = "website-0.festivalsapp.dev"
 port = 48155
-key = "TEST_API_KEY_001"
+key = "TEST_SERVICE_KEY_001"
 
 [tls]
-festivaslapp-root-ca = "/usr/local/festivals-website-node/ca.crt"
-cert = "/usr/local/festivals-website-node/server.crt"
-key = "/usr/local/festivals-website-node/server.key"
+festivaslapp-root-ca = "~/Library/Containers/org.festivalsapp.project/usr/local/festivals-website-node/ca.crt"
+cert = "~/Library/Containers/org.festivalsapp.project/usr/local/festivals-website-node/server.crt"
+key = "~/Library/Containers/org.festivalsapp.project/usr/local/festivals-website-node/server.key"
 
 [heartbeat]
-endpoint = "localhost"
+endpoint = "https://discovery.festivalsapp.dev:8443/loversear"
 interval = 6
 
 [authentication]
-endpoint = "localhost"
+endpoint = "https://identity.festivalsapp.dev:22580"
 
 [website]
-bind-host = "localhost"
+bind-host = "festivalsapp.dev"
 port = 8080
 protocol = "https"
+
+[log]
+info = "~/Library/Containers/org.festivalsapp.project/var/log/festivals-website-node/info.log"
+trace = "~/Library/Containers/org.festivalsapp.project/var/log/festivals-website-node/trace.log"

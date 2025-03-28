@@ -1,8 +1,6 @@
 package config
 
 import (
-	"os"
-
 	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/pelletier/go-toml"
 	"github.com/rs/zerolog/log"
@@ -21,33 +19,15 @@ type Config struct {
 	WebsiteBindHost  string
 	WebsitePort      int
 	WebsiteProtocol  string
-}
-
-func DefaultConfig() *Config {
-
-	// first we try to parse the config at the global configuration path
-	if servertools.FileExists("/etc/festivals-website-node.conf") {
-		config := ParseConfig("/etc/festivals-website-node.conf")
-		if config != nil {
-			return config
-		}
-	}
-
-	// if there is no global configuration check the current folder for the template config file
-	// this is mostly so the application will run in development environment
-	path, err := os.Getwd()
-	if err != nil {
-		log.Fatal().Msg("server initialize: could not read default config file with error:" + err.Error())
-	}
-	path = path + "/config_template.toml"
-	return ParseConfig(path)
+	InfoLog          string
+	TraceLog         string
 }
 
 func ParseConfig(cfgFile string) *Config {
 
 	content, err := toml.LoadFile(cfgFile)
 	if err != nil {
-		log.Fatal().Msg("server initialize: could not read config file at '" + cfgFile + "' with error: " + err.Error())
+		log.Fatal().Err(err).Msg("server initialize: could not read config file at '" + cfgFile + "' with error: " + err.Error())
 	}
 
 	serviceBindHost := content.Get("service.bind-host").(string)
@@ -67,6 +47,15 @@ func ParseConfig(cfgFile string) *Config {
 	websitePort := content.Get("website.port").(int64)
 	websiteProtocol := content.Get("website.protocol").(string)
 
+	infoLogPath := content.Get("log.info").(string)
+	traceLogPath := content.Get("log.trace").(string)
+
+	tlsrootcert = servertools.ExpandTilde(tlsrootcert)
+	tlscert = servertools.ExpandTilde(tlscert)
+	tlskey = servertools.ExpandTilde(tlskey)
+	infoLogPath = servertools.ExpandTilde(infoLogPath)
+	traceLogPath = servertools.ExpandTilde(traceLogPath)
+
 	return &Config{
 		ServiceBindHost:  serviceBindHost,
 		ServicePort:      int(servicePort),
@@ -80,5 +69,7 @@ func ParseConfig(cfgFile string) *Config {
 		WebsiteBindHost:  websiteBindHost,
 		WebsitePort:      int(websitePort),
 		WebsiteProtocol:  websiteProtocol,
+		InfoLog:          infoLogPath,
+		TraceLog:         traceLogPath,
 	}
 }

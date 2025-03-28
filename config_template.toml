@@ -4,7 +4,7 @@
 [service]
 bind-host = "localhost"
 port = 48155
-key = "TEST_API_KEY_001"
+key = "TEST_SERVICE_KEY_001"
 
 [tls]
 festivaslapp-root-ca = "/usr/local/festivals-website-node/ca.crt"
@@ -22,3 +22,7 @@ endpoint = "localhost"
 bind-host = "localhost"
 port = 8080
 protocol = "https"
+
+[log]
+info = "/var/log/festivals-website-node/info.log"
+trace = "/var/log/festivals-website-node/trace.log"
