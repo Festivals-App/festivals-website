@@ -40,6 +40,8 @@ as the compile script won't attempt any optimizations on the images.
 
 The key requirements for the website are: fast, easy to update, open source, accessible([*](https://github.com/Festivals-App/festivals-website/issues/1)) and secure.
 
+The `server` directory manages API routes and middleware for the sidecar app and the `operation` folder documents deployment and environment. GitHub Actions are in `.github`, and `.vscode` provides recommended settings.
+
 ### Requirements
 
 - [Golang](https://go.dev/) Version 1.24.1+
