@@ -58,7 +58,7 @@ You only need to install minify on your system to allow the compile script to ru
 
 ## Deployment
 
-I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). To deploy just follow the [**deployment guide**](./operation/DEPLOYMENT.md) for deploying it inside a virtual machine or the [**local deployment guide**](./operation/local/README.md) for running it on your macOS developer machine.
+I use [nginx](https://www.nginx.com/) to serve festivalsapp.org, deployed in a small VM running Ubuntu at [digitalocean](https://www.digitalocean.com/). Just follow the [**deployment guide**](./operation/DEPLOYMENT.md) for deploying it inside a virtual machine or the [**local deployment guide**](./operation/local/README.md) for running it on your macOS developer machine.
 
 # Engage
 
