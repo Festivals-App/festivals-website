@@ -17,7 +17,7 @@ As all festivalsapp services communicate based on DNS names you need to add some
 
 This project uses Make to streamline local setup and execution. The Makefile includes commands for installing dependencies, configuring the environment, and running the service. Using Make ensures a consistent workflow and simplifies common tasks.
 
-In order to run the festivals website node needs to access the [FestivalsApp Identity Server](https://github.com/Festivals-App/festivals-identity-server) so it's a good idea to let that run at the same time, and to prevent annoying error messages you should run the [FestivalsApp Gateway](https://github.com/Festivals-App/festivals-gateway) service too. You can do that with the `run-env` command but in order for the command to work you need to run the `install` commmand at least once for the identity and the gateway service. To stop the identity and gateway service you need to call the `stop-env` command.
+In order to run the festivals website node needs to access the [FestivalsApp Identity Server](https://github.com/Festivals-App/festivals-identity-server) so it's a good idea to let that run at the same time, and to prevent annoying error messages you should run the [FestivalsApp Gateway](https://github.com/Festivals-App/festivals-gateway) service too. You can do that with the `run-env` command but in order for the command to work you need to run the `install` commmand at least once for the identity and the gateway service. To stop the identity and gateway service you can call the `stop-env` command.
 
 ```bash
 make run-env
