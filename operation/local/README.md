@@ -38,7 +38,7 @@ make stop-env
     make install
     ```
 
-3. Now you can run the binary by issuing the `run` command. This will run the binary with the `--container="~/Library/Containers/org.festivalsapp.project"` option, telling the binary that the config file will be located at `~/Library/Containers/org.festivalsapp.project/usr/local/festivals-website-node` instead of the default `/usr/local/festivals-website-node`.
+3. Now you can run the binary by issuing the `run` command. This will run the binary with the `--container="~/Library/Containers/org.festivalsapp.project"` option, telling the binary that the config file will be located at `~/Library/Containers/org.festivalsapp.project/etc/festivals-website-node.conf` instead of the default `/etc/festivals-website-node.conf`.
 
     ```bash
     make run
