@@ -16,9 +16,6 @@ type Config struct {
 	LoversEar        string
 	Interval         int
 	IdentityEndpoint string
-	WebsiteBindHost  string
-	WebsitePort      int
-	WebsiteProtocol  string
 	InfoLog          string
 	TraceLog         string
 }
@@ -43,10 +40,6 @@ func ParseConfig(cfgFile string) *Config {
 
 	identity := content.Get("authentication.endpoint").(string)
 
-	websiteBindHost := content.Get("website.bind-host").(string)
-	websitePort := content.Get("website.port").(int64)
-	websiteProtocol := content.Get("website.protocol").(string)
-
 	infoLogPath := content.Get("log.info").(string)
 	traceLogPath := content.Get("log.trace").(string)
 
@@ -66,9 +59,6 @@ func ParseConfig(cfgFile string) *Config {
 		LoversEar:        loversear,
 		Interval:         int(interval),
 		IdentityEndpoint: identity,
-		WebsiteBindHost:  websiteBindHost,
-		WebsitePort:      int(websitePort),
-		WebsiteProtocol:  websiteProtocol,
 		InfoLog:          infoLogPath,
 		TraceLog:         traceLogPath,
 	}
