@@ -27,7 +27,6 @@ func main() {
 	log.Info().Msg("Server did start")
 
 	go sendNodeHeartbeat(conf)
-	go sendSiteHeartbeat(conf)
 	log.Info().Msg("Heartbeat routines where started")
 
 	// wait forever
@@ -45,29 +44,6 @@ func sendNodeHeartbeat(conf *config.Config) {
 		Service:   "festivals-website-node",
 		Host:      "https://" + conf.ServiceBindHost,
 		Port:      conf.ServicePort,
-		Available: true,
-	}
-
-	t := time.NewTicker(time.Duration(conf.Interval) * time.Second)
-	defer t.Stop()
-	for range t.C {
-		err = servertools.SendHeartbeat(heartbeatClient, conf.LoversEar, conf.ServiceKey, beat)
-		if err != nil {
-			log.Error().Err(err).Msg("Failed to send heartbeat")
-		}
-	}
-}
-
-func sendSiteHeartbeat(conf *config.Config) {
-
-	heartbeatClient, err := servertools.HeartbeatClient(conf.TLSCert, conf.TLSKey, conf.TLSRootCert)
-	if err != nil {
-		log.Fatal().Err(err).Str("type", "server").Msg("Failed to create heartbeat client")
-	}
-	beat := &servertools.Heartbeat{
-		Service:   "festivals-website",
-		Host:      conf.WebsiteProtocol + "://" + conf.WebsiteBindHost,
-		Port:      conf.WebsitePort,
 		Available: true,
 	}
 
