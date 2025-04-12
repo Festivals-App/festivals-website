@@ -18,11 +18,6 @@ interval = 6
 [authentication]
 endpoint = "localhost"
 
-[website]
-bind-host = "localhost"
-port = 8080
-protocol = "https"
-
 [log]
 info = "/var/log/festivals-website-node/info.log"
 trace = "/var/log/festivals-website-node/trace.log"

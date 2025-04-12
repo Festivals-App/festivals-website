@@ -18,11 +18,6 @@ interval = 6
 [authentication]
 endpoint = "https://identity.festivalsapp.dev:22580"
 
-[website]
-bind-host = "festivalsapp.dev"
-port = 8080
-protocol = "https"
-
 [log]
 info = "~/Library/Containers/org.festivalsapp.project/var/log/festivals-website-node/info.log"
 trace = "~/Library/Containers/org.festivalsapp.project/var/log/festivals-website-node/trace.log"
