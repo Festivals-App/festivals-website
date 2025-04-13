@@ -73,4 +73,7 @@ jobs:
 
       - name: Step 7 - Trigger website update
         run: |
-          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://festivals-website-neele.festivalsapp.org/update/website
+          echo "${{ secrets.FESTIVALSAPP_CA_BASE64 }}" | base64 --decode > ca.crt
+          echo "${{ secrets.FESTIVALSAPP_GITHUB_CLIENT_BASE64 }}" | base64 --decode > client_cert.crt
+          echo "${{ secrets.FESTIVALSAPP_GITHUB_CLIENT_KEY_BASE64 }}" | base64 --decode > client_key.key
+          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" --cacert ca.crt --cert client_cert.crt --key client_key.key https://festivals-website-neele.festivalsapp.org/update/website
