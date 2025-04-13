@@ -79,4 +79,4 @@ jobs:
 
       - name: Step 8 - Trigger website update
         run: |
-          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" --cacert ca.crt --cert client_cert.crt --key client_key.key https://festivals-website-neele.festivalsapp.org/update/website
+          curl -X POST --header "Service-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" --cacert ca.crt --cert client_cert.crt --key client_key.key -X POST https://festivals-website-neele.festivalsapp.org:48155/update/website
