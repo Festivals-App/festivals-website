@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v4.2.2
     
       - name: Step 1 - Prepare compile environment
-        run: sudo apt install minify -y
+        run: sudo apt-get install minify -y
     
       - name: Step 2 - Compile website
         run: |
