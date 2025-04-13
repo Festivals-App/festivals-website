@@ -35,41 +35,6 @@ echo -e "📦  Extracting website files..."
 tar -xzf festivals-website.tar.gz && rm -f festivals-website.tar.gz
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 📦 Install NGINX
-# ─────────────────────────────────────────────────────────────────────────────
-echo -e "\n🚀  Installing NGINX ..."
-apt-get install nginx -y > /dev/null 2>&1
-echo -e "✅  NGINX installed."
-sleep 1
-
-# ─────────────────────────────────────────────────────────────────────────────
-# ⚙️  Configure Nginx
-# ─────────────────────────────────────────────────────────────────────────────
-mkdir -p /etc/nginx/sites-available || { echo -e "\n🚨  ERROR: Failed to create /etc/nginx/sites-available directory. Exiting."; exit 1; }
-mv nginx-config /etc/nginx/sites-available/festivalsapp.org
-ln -sf /etc/nginx/sites-available/festivalsapp.org /etc/nginx/sites-enabled/
-echo -e "✅  Successfully installed NGINX configuration for festivalsapp.org."
-sleep 1
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 🔄 Prepare Remote Website Update Workflow
-# ─────────────────────────────────────────────────────────────────────────────
-mv update_website.sh /usr/local/festivals-website/update.sh
-chmod +x /usr/local/festivals-website/update.sh
-cp /etc/sudoers /tmp/sudoers.bak
-echo "$WEB_USER ALL = (ALL) NOPASSWD: /usr/local/festivals-website/update.sh" >> /tmp/sudoers.bak
-
-# Validate and replace sudoers file if syntax is correct
-if visudo -cf /tmp/sudoers.bak &>/dev/null; then
-    sudo cp /tmp/sudoers.bak /etc/sudoers
-    echo -e "✅  Prepared remote website update workflow."
-else
-    echo -e "\n🚨  ERROR: Could not modify /etc/sudoers file. Please do this manually. Exiting.\n"
-    exit 1
-fi
-sleep 1
-
-# ─────────────────────────────────────────────────────────────────────────────
 # 📂 Install Website Files
 # ─────────────────────────────────────────────────────────────────────────────
 mkdir -p /var/www/festivalsapp.org
@@ -109,7 +74,6 @@ fi
 # 📦 Install FestivalsApp Website Node
 # ─────────────────────────────────────────────────────────────────────────────
 file_url="https://github.com/Festivals-App/festivals-website/releases/latest/download/festivals-website-node-$os-$arch.tar.gz"
-
 echo -e "\n📥  Downloading latest FestivalsApp Website Node release..."
 curl --progress-bar -L "$file_url" -o festivals-website-node.tar.gz
 echo -e "📦  Extracting binary..."
@@ -159,6 +123,44 @@ else
     exit 1
 fi
 sleep 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 🔄 Prepare Remote Website Update Workflow
+# ─────────────────────────────────────────────────────────────────────────────
+mv update_website.sh /usr/local/festivals-website/update.sh
+chmod +x /usr/local/festivals-website/update.sh
+cp /etc/sudoers /tmp/sudoers.bak
+echo "$WEB_USER ALL = (ALL) NOPASSWD: /usr/local/festivals-website/update.sh" >> /tmp/sudoers.bak
+
+# Validate and replace sudoers file if syntax is correct
+if visudo -cf /tmp/sudoers.bak &>/dev/null; then
+    sudo cp /tmp/sudoers.bak /etc/sudoers
+    echo -e "✅  Prepared remote website update workflow."
+else
+    echo -e "\n🚨  ERROR: Could not modify /etc/sudoers file. Please do this manually. Exiting.\n"
+    exit 1
+fi
+sleep 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 📦 Install NGINX
+# ─────────────────────────────────────────────────────────────────────────────
+echo -e "\n🚀  Installing NGINX ..."
+apt-get install nginx -y > /dev/null 2>&1
+echo -e "✅  NGINX installed."
+sleep 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ⚙️  Configure Nginx
+# ─────────────────────────────────────────────────────────────────────────────
+mkdir -p /etc/nginx/sites-available || { echo -e "\n🚨  ERROR: Failed to create /etc/nginx/sites-available directory. Exiting."; exit 1; }
+mv nginx-config /etc/nginx/sites-available/festivalsapp.org
+echo -e "✅  Successfully installed NGINX configuration for festivalsapp.org."
+sleep 1
+
+mv nginx-certbot-config /etc/nginx/sites-available/certbot
+ln -s /etc/nginx/sites-available/certbot /etc/nginx/sites-enabled/
+echo -e "✅  Successfully installed NGINX configuration for certbot."
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 🔥 Enable and Configure Firewall

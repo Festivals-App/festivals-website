@@ -18,9 +18,9 @@ I use the development wildcard server certificate (`CN=*festivalsapp.home`) for 
 
   > **DON'T USE THIS IN PRODUCTION, SEE [festivals-pki](https://github.com/Festivals-App/festivals-pki) FOR SECURITY BEST PRACTICES FOR PRODUCTION**
 
-## 1. Installing the FestivalsApp Server
+## 1. Installing the FestivalsApp Website
 
-Run the following commands to download and install the FestivalsApp Server:
+Run the following commands to download and install the FestivalsApp Website:
 
 ```bash
 curl -o install.sh https://raw.githubusercontent.com/Festivals-App/festivals-website/master/operation/install.sh
@@ -72,7 +72,7 @@ sudo chmod 640 /usr/local/festivals-website-node/server.crt
 sudo chmod 600 /usr/local/festivals-website-node/server.key
 ```
 
-## 3. Configuring the FestivalsApp Server
+## 3. Configuring the FestivalsApp Website Node
 
 Open the configuration file:
 
@@ -80,7 +80,7 @@ Open the configuration file:
 sudo nano /etc/festivals-website-node.conf
 ```
 
-Set the server name, database host, heartbeat endpoint and authentication endpoint:
+Set the server name, heartbeat endpoint and authentication endpoint:
 
 ```ini
 [service]
@@ -97,13 +97,38 @@ endpoint = "<authentication endpoint>"
 # endpoint = "https://identity-0.festivalsapp.home:22580"
 ```
 
-And now let's start the service:
+Let's start FestivalsApp Website Node
 
 ```bash
 sudo systemctl start festivals-website-node
 ```
 
-## **🚀 The festivalsapp server should now be running successfully. 🚀**
+## 4. Configure the HTTPS Certificates for the Website
+
+Let's install and run [certbot](https://certbot.eff.org/) to automate HTTPS certificate creation and renewal. We also need to start NGINX in order for certbot to work. We don't need to allow trafic on the port 8000 in ufw because the install script installed and linked a NGINX configuration that will forward traffic from port 80 to port 8000.
+
+```bash
+sudo apt install certbot
+sudo systemctl start nginx
+sudo certbot certonly  --standalone  --http-01-port 8000  --deploy-hook 'systemctl reload nginx'  --cert-name festivalsapp.org  -d festivalsapp.org,www.festivalsapp.org
+```
+
+Create the DH parameters with OpenSSL, this may take a few minutes
+
+ ```bash
+ sudo mkdir /etc/nginx/ssl
+ sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+ ```
+
+Now we can link the NGINX configuration for the website to the enabled sites directory and restart NGINX:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/festivalsapp.org /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+## **🚀 The festivalsapp website and website node should now be running successfully. 🚀**
 
 ### Optional: Setting Up DNS Resolution  
 
@@ -126,10 +151,11 @@ Add the following entries:
 ...
 
 # Example:  
-# 192.168.8.188 server-0.festivalsapp.home
-# 192.168.8.187 database-0.festivalsapp.home
+# 192.168.8.188 website-0.festivalsapp.home
 # 192.168.8.186 discovery.festivalsapp.home
 # 192.168.8.185 identity-0.festivalsapp.home
+# 192.168.8.188 www.festivalsapp.home
+# 192.168.8.188 festivalsapp.home
 # ...
 ```
 
@@ -152,5 +178,5 @@ This should return a JWT Token `<Header.<Payload>.<Signatur>`
 Use this to make authorized calls to the festivals server:
 
 ```bash
-curl -H "Api-Key: TEST_API_KEY_001" -H "Authorization: Bearer <JWT>" --cert /opt/homebrew/etc/pki/issued/api-client.crt --key /opt/homebrew/etc/pki/private/api-client.key --cacert /opt/homebrew/etc/pki/ca.crt https://server-0.festivalsapp.home:10439/info
+curl -H "Api-Key: TEST_API_KEY_001" -H "Authorization: Bearer <JWT>" --cert /opt/homebrew/etc/pki/issued/api-client.crt --key /opt/homebrew/etc/pki/private/api-client.key --cacert /opt/homebrew/etc/pki/ca.crt https://website-0.festivalsapp.home:48155/info
 ```

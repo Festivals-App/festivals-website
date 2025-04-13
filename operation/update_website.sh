@@ -40,8 +40,6 @@ file_url="https://github.com/Festivals-App/festivals-website/releases/latest/dow
 curl -L "$file_url" -o festivals-website.tar.gz
 tar -xzvf festivals-website.tar.gz
 rm festivals-website.tar.gz
-rm nginx-config
-rm update_website.sh
 
 # Install the website files
 #

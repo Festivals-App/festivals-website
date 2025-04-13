@@ -33,7 +33,7 @@ jobs:
         binary_name: "festivals-website-node"
         build_flags: -v
         ldflags: -X 'github.com/Festivals-App/festivals-website/server/status.ServerVersion=${{ env.APP_VERSION }}' -X 'github.com/Festivals-App/festivals-website/server/status.BuildTime=${{ env.BUILD_TIME }}' -X 'github.com/Festivals-App/festivals-website/server/status.GitRef=${{ github.ref }}'
-        extra_files: LICENSE README.md config_template.toml operation/service_template.service operation/update_node.sh operation/ufw_app_profile
+        extra_files: LICENSE README.md config_template.toml operation/service_template.service operation/update_node.sh operation/update_website.sh operation/ufw_app_profile operation/nginx-certbot-config operation/nginx-config
 
   archive-build-artifacts:
     name: Release website
@@ -48,35 +48,29 @@ jobs:
         run: |
           chmod +x compile.sh
           ./compile.sh
-          
-      - name: Step 3 - Copy NGINX config into compiled website folder
-        run: \cp operation/nginx-config out/current
         
-      - name: Step 4 - Copy update script into compiled website folder
-        run: \cp operation/update_website.sh out/current
-
-      - name: Step 5 - Create version file
+      - name: Step 3 - Create version file
         run: |
           cd out/current 
           echo "$(echo ${GITHUB_REF} | rev | cut -d'/' -f 1 | rev )" >> version
       
-      - name: Step 6 - Create compile_date file
+      - name: Step 4 - Create compile_date file
         run: |
           cd out/current
           echo "$(date)" >> compile_date
         
-      - name: Step 7 - Tar and compress
+      - name: Step 5 - Tar and compress
         run: |
           cd out/current
           tar -zcvf festivals-website.tar.gz * .well-known
           
-      - name: Step 8 - Upload to Release
+      - name: Step 6 - Upload to Release
         uses: svenstaro/upload-release-action@2.9.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: out/current/festivals-website.tar.gz
           tag: ${{ github.ref }}
 
-      - name: Step 9 - Trigger website update
+      - name: Step 7 - Trigger website update
         run: |
-          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://website.festivalsapp.org/update/website
+          curl -X POST --header "Api-Key: ${{ secrets.FESTIVALS_WEBSITE_UPDATE_KEY }}" https://festivals-website-neele.festivalsapp.org/update/website
