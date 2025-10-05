@@ -6,7 +6,7 @@ require (
 	github.com/Festivals-App/festivals-identity-server v0.8.3
 	github.com/Festivals-App/festivals-pki v0.1.1
 	github.com/Festivals-App/festivals-server-tools v0.0.12
-	github.com/go-chi/chi/v5 v5.2.2
+	github.com/go-chi/chi/v5 v5.2.3
 	github.com/pelletier/go-toml v1.9.5
 	github.com/rs/zerolog v1.34.0
 )
@@ -18,6 +18,6 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	golang.org/x/sys v0.35.0 // indirect
+	golang.org/x/sys v0.36.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 )
