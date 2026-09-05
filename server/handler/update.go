@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	token "github.com/Festivals-App/festivals-identity-server/jwt"
+	token "github.com/Festivals-App/festivals-identity-server/auth"
 	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/Festivals-App/festivals-website/server/status"
 	"github.com/rs/zerolog/log"

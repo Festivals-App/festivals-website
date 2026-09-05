@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	token "github.com/Festivals-App/festivals-identity-server/jwt"
+	token "github.com/Festivals-App/festivals-identity-server/auth"
 	festivalspki "github.com/Festivals-App/festivals-pki"
 	servertools "github.com/Festivals-App/festivals-server-tools"
 	"github.com/Festivals-App/festivals-website/server/config"
